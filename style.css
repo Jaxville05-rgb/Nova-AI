@@ -1,0 +1,5367 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+
+    background: var(--bg-main);
+    color: var(--text-main);
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+header {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f172a, #1e293b, #2563eb);
+}
+
+.page-header {
+    min-height: auto;
+    background: #0f172a;
+}
+/* =========================
+   THEME COLORS
+========================= */
+
+:root {
+    --bg-main: #020817;
+    --bg-section: #0f172a;
+    --bg-card: #1e293b;
+    --bg-card-alt: #111c32;
+
+    --text-main: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+
+    --border: #334155;
+
+    --accent: #38bdf8;
+    --accent-dark: #0284c7;
+
+    --button-text: #ffffff;
+}
+
+
+/* LIGHT THEME */
+
+body.light-mode {
+
+    --bg-main: #f8fafc;
+    --bg-section: #ffffff;
+    --bg-card: #ffffff;
+    --bg-card-alt: #f1f5f9;
+
+    --text-main: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+
+    --border: #dbe3ee;
+
+    --accent: #0284c7;
+    --accent-dark: #0369a1;
+
+    --button-text: #ffffff;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    width: 100%;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 6%;
+
+   
+
+    position: relative;
+    z-index: 1000;
+}
+
+
+/* LOGO */
+
+.logo {
+    color: #38bdf8;
+    text-decoration: none;
+
+    font-size: 28px;
+    font-weight: 800;
+
+    letter-spacing: -1px;
+}
+
+
+/* DESKTOP NAV */
+
+.desktop-nav {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 28px;
+}
+
+
+.nav-links {
+    display: flex;
+    align-items: center;
+
+    gap: 30px;
+
+    list-style: none;
+
+    margin: 0;
+    padding: 0;
+}
+
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: 0.25s;
+}
+
+
+.nav-links a:hover {
+    color: #38bdf8;
+}
+
+
+/* GET STARTED */
+
+.nav-btn {
+    display: inline-block;
+
+    border-radius: 30px;
+
+    background: #38bdf8;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    transition: 0.25s;
+}
+
+
+.nav-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   THEME BUTTON
+========================= */
+
+.theme-toggle {
+    width: 45px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #334155;
+    border-radius: 50%;
+
+    background: #111c32;
+
+    color: #38bdf8;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+
+.theme-toggle:hover {
+    border-color: #38bdf8;
+    transform: rotate(10deg);
+}
+
+
+.theme-toggle svg {
+    width: 18px;
+    height: 18px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+.moon-icon {
+    display: none;
+}
+
+
+/* =========================
+   MOBILE CONTROLS
+========================= */
+
+.mobile-controls {
+    display: none;
+
+    margin-left: auto;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+/* HAMBURGER */
+
+.menu-toggle {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 5px;
+
+    border: 1px solid #334155;
+    border-radius: 10px;
+
+    background: #111c32;
+
+    cursor: pointer;
+}
+
+
+.menu-toggle span {
+    width: 18px;
+    height: 2px;
+
+    background: white;
+
+    border-radius: 5px;
+
+    transition: 0.3s;
+}
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+.mobile-menu {
+    display: none;
+
+    position: absolute;
+
+    top: 80px;
+    left: 20px;
+    right: 20px;
+
+    padding: 20px;
+
+    background: #111c32;
+
+    border: 1px solid #334155;
+
+    border-radius: 16px;
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+
+.mobile-menu a {
+    display: block;
+
+    padding: 14px;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 10px;
+
+    transition: 0.2s;
+}
+
+
+.mobile-menu a:hover {
+    background: #1e293b;
+    color: #38bdf8;
+}
+
+
+.mobile-menu.active {
+    display: block;
+}
+
+
+.mobile-start {
+    margin-top: 10px;
+
+    text-align: center;
+
+    background: #38bdf8;
+
+    font-weight: bold;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    padding-left: 40rem;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    color: #38bdf8;
+    padding-left: 6rem;
+    padding-top: 1.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transform: .3s;
+}
+
+.nav-links a:hover {
+    color: #38bdf8;
+}
+
+.nav-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    background: #38bdf8;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 80vh;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 60px;
+    max-width: 850px;
+    margin: auto;
+}
+
+.hero p {
+    margin: 30px auto;
+    max-width: 650px;
+    font-size: 20px;
+    color: #d1d5db;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.primary,
+.secondary {
+    padding: 16px 35px;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: .3s;
+}
+
+.primary {
+    background: #38bdf8;
+    color: white;
+}
+
+.primary:hover {
+    transform: translateY(-3px);
+}
+
+.secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.secondary:hover {
+    background: white;
+    color: #0f172a;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 80px 8%;
+    background: #111827;
+}
+
+.card {
+    background: #1f2937;
+    padding: 30px;
+    border-radius: 15px;
+    transition: .5s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card h3 {
+    margin-bottom: 15px;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #0f172a;
+    color: #9ca3af;
+}
+
+@media(max-width:768px) {
+    .nav-bar {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+}
+
+/* =========================
+   INNER PAGES
+========================= */
+
+.page-header {
+    background: #0f172a;
+}
+
+.page-hero {
+    text-align: center;
+    padding: 100px 20px 60px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 30px;
+    background: rgba(56, 189, 248, 0.12);
+    color: #38bdf8;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.page-hero h1 {
+    font-size: 52px;
+    max-width: 750px;
+    margin: 20px auto;
+}
+
+.page-hero p {
+    max-width: 600px;
+    margin: auto;
+    color: #cbd5e1;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+
+/* FEATURES */
+
+.feature-grid {
+    max-width: 1100px;
+    margin: auto;
+    padding: 50px 20px 100px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.feature-card {
+    background: #1e293b;
+    padding: 35px;
+    border-radius: 18px;
+    border: 1px solid #334155;
+    transition: 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    border-color: #38bdf8;
+}
+
+.feature-icon {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.feature-card h2 {
+    margin-bottom: 12px;
+}
+
+.feature-card p {
+    color: #94a3b8;
+    line-height: 1.6;
+}
+
+
+/* PRICING */
+
+.pricing-grid {
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px 100px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.price-card {
+    position: relative;
+    background: #1e293b;
+    padding: 35px;
+    border-radius: 20px;
+    border: 1px solid #334155;
+}
+
+.price-card.featured {
+    border: 2px solid #38bdf8;
+    transform: scale(1.03);
+}
+
+.popular {
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: #38bdf8;
+    color: white;
+
+    padding: 6px 15px;
+    border-radius: 20px;
+
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 45px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.price span {
+    font-size: 15px;
+    color: #94a3b8;
+}
+
+.price-card>p:not(.price) {
+    color: #94a3b8;
+}
+
+.price-card ul {
+    list-style: none;
+    margin: 30px 0;
+}
+
+.price-card li {
+    margin: 15px 0;
+    color: #cbd5e1;
+}
+
+.price-btn {
+    display: block;
+    text-align: center;
+
+    padding: 14px;
+    border-radius: 30px;
+
+    background: #38bdf8;
+    color: white;
+
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+/* CONTACT */
+
+.contact-section {
+    max-width: 650px;
+    margin: auto;
+    padding: 30px 20px 100px;
+}
+
+.contact-form {
+    background: #1e293b;
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid #334155;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-form label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 15px;
+    border: 1px solid #475569;
+    border-radius: 10px;
+    background: #0f172a;
+    color: white;
+    outline: none;
+}
+
+.contact-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #38bdf8;
+}
+
+.contact-form .primary {
+    margin-top: 15px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .feature-grid,
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .price-card.featured {
+        transform: none;
+    }
+
+    .page-hero h1 {
+        font-size: 40px;
+    }
+
+    .nav-right {
+        flex-direction: column;
+    }
+
+}
+/* =========================
+   HOME HERO
+========================= */
+
+.hero {
+    min-height: 650px;
+
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+
+    gap: 60px;
+
+    padding: 70px 7% 80px;
+
+    text-align: left;
+}
+
+
+.hero-content {
+    max-width: 620px;
+}
+
+
+.hero-badge {
+    display: inline-block;
+
+    padding: 8px 15px;
+
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    border-radius: 30px;
+
+    background: rgba(56, 189, 248, 0.08);
+
+    color: #38bdf8;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+
+.hero h1 {
+    font-size: clamp(48px, 6vw, 76px);
+
+    line-height: 1.05;
+
+    margin: 25px 0;
+}
+
+
+.hero h1 span {
+    display: block;
+    color: #38bdf8;
+}
+
+
+.hero p {
+    max-width: 570px;
+    
+    color: var(--text-secondary);
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    margin-bottom: 30px;
+}
+
+
+.hero .buttons {
+    justify-content: flex-start;
+}
+
+
+.hero .primary,
+.hero .secondary {
+    display: inline-block;
+
+    text-decoration: none;
+}
+
+
+.hero-note {
+    margin-top: 20px;
+
+    color: var(--text-secondary);
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   AI PREVIEW — BOLD GLASS SCREEN
+========================================= */
+
+.ai-preview {
+    position: relative;
+    z-index: 2;
+    isolation: isolate;
+
+    width: 560px;
+    max-width: 100%;
+
+    padding: 30px;
+
+    border-radius: 30px;
+
+    /* BOLD DARK GLASS */
+    background:
+        linear-gradient(135deg,
+            rgba(22, 40, 78, 0.96),
+            rgba(7, 18, 40, 0.94) 55%,
+            rgba(4, 13, 31, 0.98));
+
+    border: 1px solid rgba(125, 211, 252, 0.38);
+
+    /* REAL GLASS DEPTH */
+    backdrop-filter: blur(18px) saturate(145%);
+    -webkit-backdrop-filter: blur(18px) saturate(145%);
+
+    /* STRONG EDGE + BLUE ENERGY */
+    box-shadow:
+        0 0 0 1px rgba(94, 190, 255, 0.08),
+        0 0 35px rgba(56, 189, 248, 0.28),
+        0 0 85px rgba(37, 99, 235, 0.30),
+        0 0 150px rgba(37, 99, 235, 0.16),
+        0 35px 70px rgba(0, 0, 0, 0.55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        inset 0 -1px 0 rgba(56, 189, 248, 0.12);
+
+    /*
+       THIS IS THE IMPORTANT PART.
+       It is NOT a simple 2D tilt.
+    */
+    transform:
+        perspective(1400px) rotateY(-7deg) rotateX(2deg) rotateZ(2.5deg) scale(1.08);
+
+    transform-origin: center center;
+
+    transform-style: preserve-3d;
+
+    overflow: visible;
+}
+
+
+/* =========================================
+   AMBIENT LIGHT BEHIND THE SCREEN
+========================================= */
+
+.ai-preview::before {
+    content: "";
+
+    position: absolute;
+
+    width: 125%;
+    height: 120%;
+
+    left: 50%;
+    top: 52%;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(ellipse at center,
+            rgba(37, 99, 235, 0.55) 0%,
+            rgba(56, 189, 248, 0.32) 28%,
+            rgba(124, 58, 237, 0.20) 48%,
+            transparent 72%);
+
+    filter: blur(100px);
+
+    opacity: 0.42;
+
+    z-index: -2;
+
+    pointer-events: none;
+}
+
+/* =========================================
+   GLASS LIGHT REFLECTION
+   ========================================= */
+
+/* =========================================
+   SLEEK GLASS REFLECTION
+========================================= */
+
+.ai-preview::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 1px;
+
+    border-radius: 29px;
+
+    background:
+        linear-gradient(115deg,
+            rgba(255, 255, 255, 0.14) 0%,
+            rgba(255, 255, 255, 0.045) 18%,
+            transparent 42%,
+            transparent 72%,
+            rgba(56, 189, 248, 0.07) 100%);
+
+    opacity: 0.85;
+
+    pointer-events: none;
+
+    z-index: 10;
+}
+
+/* =========================================
+   INNER GLASS PANELS
+   ========================================= */
+
+.preview-stats>div,
+.preview-progress {
+
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.075),
+            rgba(255, 255, 255, 0.025));
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+
+.preview-ai {
+
+    background:
+        linear-gradient(135deg,
+            rgba(56, 189, 248, 0.18),
+            rgba(30, 64, 175, 0.20));
+
+    border: 1px solid rgba(56, 189, 248, 0.16);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+
+/* =========================================
+   DESKTOP SCALE
+   ========================================= */
+
+    
+/* =========================================
+   MOBILE — KEEP SCREEN FLAT + RESPONSIVE
+========================================= */
+
+
+@media (max-width: 900px) {
+
+    .ai-preview {
+        width: 100%;
+        max-width: 560px;
+
+        padding: clamp(14px, 4vw, 22px);
+
+        border-radius: clamp(18px, 5vw, 24px);
+
+        transform: none;
+
+        box-shadow:
+            0 0 0 1px rgba(94, 190, 255, 0.08),
+            0 0 35px rgba(56, 189, 248, 0.22),
+            0 0 70px rgba(37, 99, 235, 0.16),
+            0 25px 55px rgba(0, 0, 0, 0.45),
+            inset 0 1px 0 rgba(255, 255, 255, 0.14);
+    }
+
+    .ai-preview::before {
+        width: 120%;
+        height: 100%;
+
+        filter: blur(75px);
+
+        opacity: 0.30;
+    }
+
+    .ai-preview::after {
+        border-radius: inherit;
+    }
+}
+
+
+/* PREVIEW STATS */
+
+.preview-stats>div {
+    padding: 18px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.075),
+            rgba(255, 255, 255, 0.025));
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 14px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.preview-stats>div {
+
+    padding: 18px;
+
+    background: #1c293e;
+
+    border-radius: 14px;
+
+}
+
+
+.preview-stats small {
+
+    display: block;
+
+    color: var(--text-secondary);
+
+    font-size: 11px;
+
+    margin-bottom: 7px;
+
+}
+
+
+.preview-stats strong {
+
+    display: block;
+
+    font-size: 23px;
+
+}
+
+
+.preview-stats span {
+
+    color: #38bdf8;
+
+    font-size: 11px;
+
+}
+
+
+/* AI ASSISTANT */
+
+.preview-ai {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 18px;
+
+    margin-top: 12px;
+
+    border-radius: 14px;
+
+    background: #19284c;
+
+}
+
+
+.preview-ai-icon {
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #38bdf8;
+
+}
+
+
+.preview-ai small {
+
+    display: block;
+
+    color: #38bdf8;
+
+    margin-top: 3px;
+
+    font-size: 11px;
+
+}
+
+
+/* PRODUCTIVITY */
+
+.preview-progress {
+
+    margin-top: 12px;
+
+    padding: 18px;
+
+    background: #1c293e;
+
+    border-radius: 14px;
+
+}
+
+
+.progress-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+
+}
+
+
+.progress-top span {
+
+    color: var(--text-secondary);
+
+    font-size: 12px;
+
+}
+
+
+.progress-top strong {
+
+    color: #38bdf8;
+
+}
+
+
+.progress-bar {
+
+    width: 100%;
+
+    height: 7px;
+
+    background: #0f172a;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+}
+
+
+.progress-bar div {
+
+    width: 84%;
+
+    height: 100%;
+
+    background: #38bdf8;
+
+    border-radius: 10px;
+
+}
+/* =========================
+   HOME FEATURES
+========================= */
+
+.home-features {
+
+    padding: 100px 7%;
+
+    background: #111827;
+
+}
+
+
+.section-heading {
+
+    max-width: 650px;
+
+    margin: 0 auto 55px;
+
+    text-align: center;
+
+}
+
+
+.section-badge {
+
+    display: inline-block;
+
+    padding: 8px 15px;
+
+    border-radius: 30px;
+
+    border: 1px solid rgba(56, 189, 248, 0.35);
+
+    color: #38bdf8;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+}
+
+
+.section-heading h2 {
+
+    font-size: 44px;
+
+    line-height: 1.15;
+
+    margin: 18px 0;
+
+}
+
+
+.section-heading h2 span {
+
+    color: #38bdf8;
+
+}
+
+
+.section-heading p {
+
+    color: #94a3b8;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================
+   HOME FEATURE CARDS
+========================= */
+
+.home-feature-grid {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 24px;
+
+    align-items: stretch;
+}
+
+
+.home-feature-card {
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    min-height: 230px;
+
+    padding: 28px;
+
+    background: var(--bg-card);
+
+    border: 1px solid var(--border);
+
+    /* KEEP YOUR ROUNDED CORNERS */
+    border-radius: 20px;
+
+    color: var(--text-main);
+
+    overflow: hidden;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* ICON */
+
+.home-feature-card .feature-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    margin: 0 0 20px 0;
+
+    border-radius: 12px;
+
+    background: #0f172a;
+
+    font-size: 22px;
+}
+
+
+/* TITLE */
+
+.home-feature-card h3 {
+    margin: 0 0 12px 0;
+
+    font-size: 21px;
+    line-height: 1.25;
+
+    color: var(--text-main);
+}
+
+
+/* DESCRIPTION */
+
+.home-feature-card p {
+    margin: 0;
+
+    color: var(--text-secondary);
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* LINK */
+
+.home-feature-card a {
+    display: inline-block;
+
+    width: fit-content;
+
+    margin-top: auto;
+    padding-top: 20px;
+
+    color: #38bdf8;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+
+/* HOVER */
+
+.home-feature-card:hover {
+    transform: translateY(-7px);
+
+    border-color: #38bdf8;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.22);
+}
+
+/* =========================
+   MOBILE LAYOUT
+========================= */
+
+@media (max-width: 900px) {
+
+    /* NAVBAR */
+
+    .navbar {
+        padding: 20px;
+        flex-wrap: wrap;
+    }
+
+    .nav-right {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 20px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 18px;
+    }
+
+    .nav-btn {
+        display: none;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        min-height: auto !important;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 45px;
+
+        padding: 50px 20px 70px;
+
+        text-align: center;
+    }
+
+
+    .hero-content {
+        width: 100%;
+        max-width: 600px;
+    }
+
+
+    .hero h1 {
+        font-size: clamp(42px, 12vw, 60px);
+        line-height: 1.05;
+        margin: 20px 0;
+    }
+
+
+    .hero p {
+        width: 100%;
+        font-size: 16px;
+        line-height: 1.6;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .hero .buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+
+    .hero-note {
+        line-height: 1.8;
+    }
+
+
+    /* AI PREVIEW */
+
+    .ai-preview {
+        width: 100%;
+        max-width: 100%;
+
+        margin: 0;
+
+        padding: 20px;
+
+        box-sizing: border-box;
+    }
+
+
+    .preview-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    /* FEATURE SECTION */
+
+    .home-features {
+        padding: 75px 20px;
+        position: relative;
+        z-index: 2;
+    }
+
+
+    .section-heading {
+        margin-bottom: 40px;
+    }
+
+
+    .section-heading h2 {
+        font-size: 38px;
+    }
+
+
+    .home-feature-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+
+    .home-feature-card {
+        min-height: auto;
+    }
+
+}
+
+@media (max-width: 900px) {
+
+    .navbar {
+        height: 70px;
+        padding: 0 20px;
+    }
+
+
+    .desktop-nav {
+        display: none;
+    }
+
+
+    .mobile-controls {
+        display: flex;
+    }
+
+
+    .mobile-menu {
+        top: 70px;
+    }
+
+    /* =========================
+   LIGHT MODE
+========================= */
+
+body.light-mode {
+    background: #f8fafc;
+    color: #0f172a;
+}
+
+
+body.light-mode .navbar {
+    background: #ffffff;
+    border-bottom-color: #e2e8f0;
+}
+
+
+body.light-mode .nav-links a {
+    color: #0f172a;
+}
+
+
+body.light-mode .nav-links a:hover {
+    color: #0284c7;
+}
+
+
+body.light-mode .theme-toggle {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+}
+
+
+body.light-mode .mobile-menu {
+    background: #ffffff;
+    border-color: #e2e8f0;
+}
+
+
+body.light-mode .mobile-menu a {
+    color: #0f172a;
+}
+
+
+body.light-mode .mobile-menu a:hover {
+    background: #f1f5f9;
+}
+
+
+body.light-mode .menu-toggle {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+}
+
+
+body.light-mode .menu-toggle span {
+    background: #0f172a;
+}
+}
+/* =========================
+   LIGHT MODE
+========================= */
+
+body.light-mode {
+    background: #f8fafc;
+    color: #0f172a;
+}
+
+
+body.light-mode .navbar {
+    background: #ffffff;
+    border-bottom-color: #e2e8f0;
+}
+
+
+body.light-mode .nav-links a {
+    color: #0f172a;
+}
+
+
+body.light-mode .nav-links a:hover {
+    color: #0284c7;
+}
+
+
+body.light-mode .theme-toggle {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+}
+
+
+body.light-mode .mobile-menu {
+    background: #ffffff;
+    border-color: #e2e8f0;
+}
+
+
+body.light-mode .mobile-menu a {
+    color: #0f172a;
+}
+
+
+body.light-mode .mobile-menu a:hover {
+    background: #f1f5f9;
+}
+
+
+body.light-mode .menu-toggle {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+}
+
+
+body.light-mode .menu-toggle span {
+    background: #0f172a;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    align-items: stretch;
+}
+
+.feature-card {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
+    /* keep your existing height */
+    margin: 0;
+
+    /* keep your existing radius */
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.feature-icon {
+    flex-shrink: 0;
+    margin-bottom: 16px;
+}
+
+.feature-card h3 {
+    margin: 0 0 10px;
+}
+
+.feature-card p {
+    margin: 0;
+    line-height: 1.55;
+}
+
+.feature-card a {
+    display: inline-block;
+    margin-top: auto;
+    padding-top: 16px;
+}
+
+/* =========================================
+   FEATURE CARD SIZE
+========================================= */
+
+.features-grid {
+    width: 100%;
+    max-width: 1200px;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 24px;
+}
+
+.feature-card {
+    width: 100%;
+    min-height: 230px;
+
+    padding: 26px;
+
+    box-sizing: border-box;
+
+    border-radius: 20px;
+}
+
+
+/* Icon */
+
+.feature-icon {
+    width: 48px;
+    height: 48px;
+
+    margin-bottom: 20px;
+}
+
+
+/* Heading */
+
+.feature-card h3 {
+    font-size: 21px;
+
+    margin: 0 0 12px;
+}
+
+
+/* Description */
+
+.feature-card p {
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    max-width: 100%;
+}
+
+
+/* Link */
+
+.feature-card a {
+    margin-top: auto;
+
+    padding-top: 20px;
+
+    font-size: 14px;
+}
+
+/* =========================================
+   AI PREVIEW — BOLD GLASS SCREEN
+========================================= */
+
+.ai-preview {
+    position: relative;
+    isolation: isolate;
+
+    /* Make the glass feel substantial */
+    background:
+        linear-gradient(135deg,
+            rgba(24, 43, 78, 0.92) 0%,
+            rgba(10, 25, 52, 0.94) 48%,
+            rgba(13, 31, 64, 0.92) 100%);
+
+    border: 1px solid rgba(94, 190, 255, 0.45);
+
+    box-shadow:
+        0 0 0 1px rgba(94, 190, 255, 0.08),
+        0 0 35px rgba(56, 189, 248, 0.35),
+        0 0 80px rgba(56, 189, 248, 0.22),
+        0 30px 80px rgba(0, 0, 0, 0.50),
+        inset 0 1px 0 rgba(255, 255, 255, 0.16),
+        inset 0 -20px 45px rgba(0, 0, 0, 0.16);
+
+    /* Keep your existing glass blur */
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+}
+
+/* Blue / purple light behind the dashboard */
+
+.ai-preview::before {
+    content: "";
+
+    position: absolute;
+
+    width: 125%;
+    height: 115%;
+
+    left: -12.5%;
+    top: -7.5%;
+
+    background:
+        radial-gradient(ellipse at 55% 55%,
+            rgba(56, 189, 248, 0.48) 0%,
+            rgba(37, 99, 235, 0.34) 28%,
+            rgba(79, 70, 229, 0.20) 48%,
+            transparent 72%);
+
+    filter: blur(85px);
+
+    opacity: 0.48;
+
+    z-index: -1;
+
+    pointer-events: none;
+}
+
+/* =========================================
+   FINAL MOBILE LAYOUT FIX
+   ========================================= */
+
+@media (max-width: 900px) {
+
+    /* =========================
+       NAVBAR
+       ========================= */
+
+    .navbar {
+        width: 100%;
+        height: 70px;
+
+        padding: 0 20px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        flex-wrap: nowrap;
+
+        position: relative;
+        box-sizing: border-box;
+    }
+
+
+    /* LOGO */
+
+    .navbar .logo {
+        display: block;
+
+        position: relative;
+
+        z-index: 1001;
+
+        flex-shrink: 0;
+
+        font-size: 24px;
+    }
+
+
+    /* Hide desktop navigation */
+
+    .navbar .desktop-nav {
+        display: none;
+    }
+
+
+    /* =========================
+       MOBILE ICONS
+       ========================= */
+
+    .mobile-controls {
+        display: flex;
+
+        align-items: center;
+        justify-content: flex-end;
+
+        gap: 10px;
+
+        margin-left: auto;
+
+        width: auto;
+
+        flex-shrink: 0;
+
+        position: relative;
+
+        z-index: 1002;
+    }
+
+
+    .theme-toggle {
+        width: 42px;
+        height: 42px;
+
+        flex-shrink: 0;
+    }
+
+
+    .menu-toggle {
+        width: 42px;
+        height: 42px;
+
+        flex-shrink: 0;
+    }
+
+
+    /* =========================
+       MOBILE MENU
+       ========================= */
+
+    .mobile-menu {
+        position: absolute;
+
+        top: 70px;
+        left: 20px;
+        right: 20px;
+
+        width: auto;
+
+        z-index: 1000;
+
+        box-sizing: border-box;
+    }
+
+
+    /* =========================
+       HERO
+       ========================= */
+
+    .hero {
+        width: 100%;
+
+        min-height: auto !important;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 40px;
+
+        padding: 45px 20px 70px;
+
+        box-sizing: border-box;
+
+        text-align: center;
+    }
+
+
+    /* =========================
+       HERO CONTENT
+       ========================= */
+
+    .hero-content {
+        width: 100%;
+
+        max-width: 600px;
+
+        margin: 0 auto;
+    }
+
+
+    .hero-badge {
+        display: inline-flex;
+
+        margin-top: 0;
+    }
+
+
+    .hero h1 {
+        width: 100%;
+
+        margin: 20px 0;
+
+        font-size: clamp(42px, 12vw, 60px);
+
+        line-height: 1.05;
+    }
+
+
+    .hero p {
+        width: 100%;
+
+        max-width: 600px;
+
+        margin: 0 auto;
+
+        line-height: 1.6;
+    }
+
+
+    /* =========================
+       BUTTONS
+       ========================= */
+
+    .hero .buttons {
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        flex-wrap: wrap;
+
+        gap: 12px;
+    }
+
+
+    /* =========================
+       AI PREVIEW
+       ========================= */
+
+    .hero .ai-preview {
+        width: 100%;
+
+        max-width: 560px;
+
+        margin: 0 auto;
+
+        padding: 20px;
+
+        box-sizing: border-box;
+
+        transform: none;
+
+        transform-origin: center center;
+    }
+
+
+    /* Keep the glow visible on mobile */
+
+    .hero .ai-preview::before {
+        width: 110%;
+        height: 90%;
+
+        left: 50%;
+        top: 50%;
+
+        transform: translate(-50%, -50%);
+
+        filter: blur(75px);
+
+        opacity: 0.30;
+    }
+
+
+    /* Keep glass reflection */
+
+    .hero .ai-preview::after {
+        border-radius: 23px;
+    }
+
+
+    /* =========================
+       STATS
+       ========================= */
+
+    .preview-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 12px;
+    }
+
+
+    /* =========================
+       FEATURES
+       ========================= */
+
+    .home-features {
+        padding: 70px 20px;
+    }
+
+    .home-feature-grid {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+}
+
+/* =========================================
+   RESPONSIVE SYSTEM
+========================================= */
+
+/* TABLET + PHONE */
+@media (max-width: 900px) {
+    /* tablet/phone layout */
+}
+
+
+/* SMALL PHONES */
+@media (max-width: 480px) {
+    /* iPhone-sized layout */
+}
+
+
+/* VERY SMALL SCREENS */
+@media (max-width: 320px) {
+    /* tiny phones / watch-like widths */
+}
+
+/* =========================================
+   FIRST LANDING PAGE FIX
+   Prevent sideways scrolling + resize CTA
+========================================= */
+
+/* Prevent the entire website from overflowing horizontally */
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Make every element respect the screen width */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Prevent the main sections from becoming wider than the screen */
+body,
+main,
+section,
+header,
+footer,
+.navbar,
+.hero,
+.hero-content,
+.hero-visual {
+    max-width: 100%;
+}
+
+/* Keep the hero preview inside the screen */
+.ai-preview {
+    width: min(100%, 680px);
+    max-width: 100%;
+}
+
+/* Stop the 3D preview from creating sideways overflow on mobile */
+@media (max-width: 768px) {
+
+    .hero,
+    .hero-content,
+    .hero-visual {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .ai-preview {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+
+        /* Keep the landscape shape */
+        aspect-ratio: 16 / 9;
+
+        /* Prevent the transformed preview from escaping */
+        transform: none;
+    }
+}
+
+/* =========================================
+   SMALLER GET STARTED BUTTON
+========================================= */
+
+/* Try these common CTA class names */
+.nav-cta,
+.get-started,
+.get-started-btn,
+.cta-button {
+    width: auto;
+    min-width: 0;
+    max-width: 125px;
+
+    padding: 13px 20px;
+    min-height: 0;
+
+    border-radius: 28px;
+
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 700;
+
+    white-space: normal;
+}
+
+/* Mobile button size */
+@media (max-width: 768px) {
+
+    .nav-cta,
+    .get-started,
+    .get-started-btn,
+    .cta-button {
+        max-width: 105px;
+        padding: 11px 15px;
+        font-size: 12px;
+        border-radius: 24px;
+    }
+}
+
+/* =========================================
+   LANDING PAGE WIDTH FIX
+========================================= */
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Keep the main page sections inside the screen */
+body,
+main,
+section,
+header,
+footer,
+.navbar,
+.hero {
+    max-width: 100%;
+}
+
+/* =========================================
+   GET STARTED LINK BUTTON
+========================================= */
+
+/* =========================================
+   GET STARTED BUTTON — SINGLE LINE
+========================================= */
+
+.nav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+
+    width: auto;
+    min-width: max-content;
+    max-width: none;
+
+    padding: 10px 16px;
+
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 700;
+
+    white-space: nowrap;
+    text-align: center;
+    border-radius: 24px;
+}
+
+/* Phone version */
+@media (max-width: 768px) {
+    .nav-btn {
+        padding: 9px 13px;
+        font-size: 11px;
+        border-radius: 22px;
+    }
+}
+
+/* Smaller version on phones */
+@media (max-width: 768px) {
+    .nav-btn {
+        max-width: 105px;
+        padding: 10px 14px;
+        font-size: 12px;
+        border-radius: 22px;
+    }
+}
+
+/* =========================================
+   NOVA AI LOGO POSITIONING
+========================================= */
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-left: 0;
+    padding-left: 0;
+
+    white-space: nowrap;
+}
+
+.logo img {
+    display: block;
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.logo span {
+    margin: 0;
+    padding: 0;
+}
+
+/* =========================================
+   KEEP DARK/LIGHT TOGGLE ROUND
+========================================= */
+
+/* Common theme-toggle class names */
+.theme-toggle,
+.theme-btn,
+.theme-switch,
+.dark-mode-toggle,
+#theme-toggle {
+    flex: 0 0 34px;
+    width: 34px;
+    min-width: 34px;
+    max-width: 34px;
+    height: 34px;
+    min-height: 34px;
+    max-height: 34px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+
+    flex-shrink: 0;
+}
+
+/* Keep the icon centered */
+.theme-toggle i,
+.theme-toggle svg,
+.theme-toggle img,
+.theme-btn i,
+.theme-btn svg,
+#theme-toggle i,
+#theme-toggle svg {
+    flex-shrink: 0;
+}
+
+/* Prevent navbar controls from squeezing */
+.navbar,
+.navbar-container,
+.nav-controls,
+.mobile-controls {
+    min-width: 0;
+}
+
+.nav-btn {
+    flex-shrink: 0;
+}
+
+/* =========================================================
+   NOVA AI — FINAL LIGHT THEME FIX
+   Light body + dark/blue AI preview
+   Paste this at the very bottom of style.css
+========================================================= */
+
+
+/* =========================================================
+   1. COMPLETE PAGE LIGHT BACKGROUND
+========================================================= */
+
+body.light-mode,
+body.light-theme,
+body[data-theme="light"] {
+    background:
+        radial-gradient(circle at 85% 10%,
+            rgba(56, 189, 248, 0.12),
+            transparent 32%),
+        linear-gradient(135deg,
+            #f8fbff 0%,
+            #eef4fb 55%,
+            #e4edf8 100%) !important;
+
+    color: #172033 !important;
+}
+
+
+/* Keep sections transparent so the body background shows */
+body.light-mode main,
+body.light-mode section,
+body.light-mode header,
+body.light-mode footer,
+body.light-theme main,
+body.light-theme section,
+body.light-theme header,
+body.light-theme footer,
+body[data-theme="light"] main,
+body[data-theme="light"] section,
+body[data-theme="light"] header,
+body[data-theme="light"] footer {
+    background: transparent !important;
+}
+
+
+/* =========================================================
+   2. NAVBAR
+========================================================= */
+
+body.light-mode .navbar,
+body.light-theme .navbar,
+body[data-theme="light"] .navbar {
+    background: rgba(248, 251, 255, 0.88) !important;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.09) !important;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.05) !important;
+}
+
+body.light-mode .logo,
+body.light-mode .logo span,
+body.light-theme .logo,
+body.light-theme .logo span,
+body[data-theme="light"] .logo,
+body[data-theme="light"] .logo span {
+    color: #0d1728 !important;
+}
+
+body.light-mode .desktop-nav a,
+body.light-mode .nav-links a,
+body.light-theme .desktop-nav a,
+body.light-theme .nav-links a,
+body[data-theme="light"] .desktop-nav a,
+body[data-theme="light"] .nav-links a {
+    color: #26354b !important;
+}
+
+body.light-mode .desktop-nav a:hover,
+body.light-mode .nav-links a:hover,
+body.light-theme .desktop-nav a:hover,
+body.light-theme .nav-links a:hover,
+body[data-theme="light"] .desktop-nav a:hover,
+body[data-theme="light"] .nav-links a:hover {
+    color: #079bd8 !important;
+}
+
+
+/* =========================================================
+   3. HERO TEXT — DARK TEXT ON LIGHT BODY
+========================================================= */
+
+body.light-mode .hero h1,
+body.light-mode .hero h2,
+body.light-mode .hero h3,
+body.light-mode .hero h4,
+body.light-theme .hero h1,
+body.light-theme .hero h2,
+body.light-theme .hero h3,
+body.light-theme .hero h4,
+body[data-theme="light"] .hero h1,
+body[data-theme="light"] .hero h2,
+body[data-theme="light"] .hero h3,
+body[data-theme="light"] .hero h4 {
+    color: #0b1425 !important;
+}
+
+body.light-mode .hero p,
+body.light-mode .hero small,
+body.light-mode .hero-description,
+body.light-mode .hero-subtitle,
+body.light-theme .hero p,
+body.light-theme .hero small,
+body.light-theme .hero-description,
+body.light-theme .hero-subtitle,
+body[data-theme="light"] .hero p,
+body[data-theme="light"] .hero small,
+body[data-theme="light"] .hero-description,
+body[data-theme="light"] .hero-subtitle {
+    color: #52647b !important;
+}
+
+
+/* =========================================================
+   4. BADGE / SMALL LABEL
+========================================================= */
+
+body.light-mode .hero-badge,
+body.light-mode .badge,
+body.light-theme .hero-badge,
+body.light-theme .badge,
+body[data-theme="light"] .hero-badge,
+body[data-theme="light"] .badge {
+    color: #087fae !important;
+    background: rgba(56, 189, 248, 0.08) !important;
+    border-color: rgba(8, 155, 216, 0.45) !important;
+}
+
+
+/* =========================================================
+   5. KEEP AI PREVIEW DARK AND GLASSY
+========================================================= */
+
+body.light-mode .ai-preview,
+body.light-theme .ai-preview,
+body[data-theme="light"] .ai-preview {
+    position: relative;
+    isolation: isolate;
+
+    background:
+        linear-gradient(135deg,
+            rgba(15, 31, 61, 0.98) 0%,
+            rgba(20, 42, 79, 0.97) 48%,
+            rgba(12, 28, 58, 0.99) 100%) !important;
+
+    color: #eaf7ff !important;
+
+    border: 1px solid rgba(91, 203, 255, 0.62) !important;
+
+    box-shadow:
+        0 0 0 1px rgba(56, 189, 248, 0.1),
+        0 0 35px rgba(56, 189, 248, 0.28),
+        0 0 90px rgba(37, 99, 235, 0.2),
+        0 28px 70px rgba(15, 23, 42, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
+
+    backdrop-filter: blur(24px) saturate(150%) !important;
+}
+
+
+/* Blue glow behind the dark preview */
+body.light-mode .ai-preview::before,
+body.light-theme .ai-preview::before,
+body[data-theme="light"] .ai-preview::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+
+    width: 125%;
+    height: 125%;
+    left: -12.5%;
+    top: -12.5%;
+
+    background:
+        radial-gradient(ellipse at center,
+            rgba(56, 189, 248, 0.45) 0%,
+            rgba(37, 99, 235, 0.28) 35%,
+            rgba(99, 102, 241, 0.16) 55%,
+            transparent 75%);
+
+    filter: blur(70px);
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+
+/* Glass reflection */
+body.light-mode .ai-preview::after,
+body.light-theme .ai-preview::after,
+body[data-theme="light"] .ai-preview::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+
+    border-radius: inherit;
+    pointer-events: none;
+
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.16),
+            transparent 28%,
+            transparent 72%,
+            rgba(56, 189, 248, 0.08));
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+    z-index: 5;
+}
+
+
+/* =========================================================
+   6. DARK INNER GLASS PANELS
+========================================================= */
+
+body.light-mode .preview-stats>div,
+body.light-mode .preview-progress,
+body.light-mode .preview-ai,
+body.light-theme .preview-stats>div,
+body.light-theme .preview-progress,
+body.light-theme .preview-ai,
+body[data-theme="light"] .preview-stats>div,
+body[data-theme="light"] .preview-progress,
+body[data-theme="light"] .preview-ai {
+    color: #eaf7ff !important;
+
+    background:
+        linear-gradient(135deg,
+            rgba(35, 55, 87, 0.92),
+            rgba(23, 43, 75, 0.78)) !important;
+
+    border: 1px solid rgba(148, 196, 229, 0.18) !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 8px 24px rgba(3, 12, 28, 0.18) !important;
+
+    backdrop-filter: blur(16px) !important;
+}
+
+
+/* AI preview headings */
+body.light-mode .ai-preview h1,
+body.light-mode .ai-preview h2,
+body.light-mode .ai-preview h3,
+body.light-mode .ai-preview h4,
+body.light-mode .ai-preview strong,
+body.light-theme .ai-preview h1,
+body.light-theme .ai-preview h2,
+body.light-theme .ai-preview h3,
+body.light-theme .ai-preview h4,
+body.light-theme .ai-preview strong,
+body[data-theme="light"] .ai-preview h1,
+body[data-theme="light"] .ai-preview h2,
+body[data-theme="light"] .ai-preview h3,
+body[data-theme="light"] .ai-preview h4,
+body[data-theme="light"] .ai-preview strong {
+    color: #f3fbff !important;
+}
+
+
+/* AI preview supporting text */
+body.light-mode .ai-preview p,
+body.light-mode .ai-preview span,
+body.light-mode .ai-preview small,
+body.light-theme .ai-preview p,
+body.light-theme .ai-preview span,
+body.light-theme .ai-preview small,
+body[data-theme="light"] .ai-preview p,
+body[data-theme="light"] .ai-preview span,
+body[data-theme="light"] .ai-preview small {
+    color: #a9c0d8 !important;
+}
+
+
+/* Blue numbers and progress labels */
+body.light-mode .ai-preview .stat-number,
+body.light-mode .ai-preview .stat-value,
+body.light-mode .ai-preview .progress-value,
+body.light-mode .ai-preview .percentage,
+body.light-theme .ai-preview .stat-number,
+body.light-theme .ai-preview .stat-value,
+body.light-theme .ai-preview .progress-value,
+body.light-theme .ai-preview .percentage,
+body[data-theme="light"] .ai-preview .stat-number,
+body[data-theme="light"] .ai-preview .stat-value,
+body[data-theme="light"] .ai-preview .progress-value,
+body[data-theme="light"] .ai-preview .percentage {
+    color: #42c5ff !important;
+}
+
+
+/* =========================================================
+   7. NORMAL LIGHT-THEME CARDS OUTSIDE AI PREVIEW
+========================================================= */
+
+body.light-mode .feature-card,
+body.light-mode .pricing-card,
+body.light-mode .contact-card,
+body.light-mode .service-card,
+body.light-mode .glass-card,
+body.light-theme .feature-card,
+body.light-theme .pricing-card,
+body.light-theme .contact-card,
+body.light-theme .service-card,
+body.light-theme .glass-card,
+body[data-theme="light"] .feature-card,
+body[data-theme="light"] .pricing-card,
+body[data-theme="light"] .contact-card,
+body[data-theme="light"] .service-card,
+body[data-theme="light"] .glass-card {
+    background:
+        rgba(255, 255, 255, 0.78) !important;
+
+    color: #172033 !important;
+
+    border: 1px solid rgba(15, 23, 42, 0.1) !important;
+
+    box-shadow:
+        0 12px 32px rgba(15, 23, 42, 0.07),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+
+    backdrop-filter: blur(18px) !important;
+}
+
+body.light-mode .feature-card h3,
+body.light-mode .pricing-card h3,
+body.light-mode .contact-card h3,
+body.light-mode .service-card h3,
+body.light-theme .feature-card h3,
+body.light-theme .pricing-card h3,
+body.light-theme .contact-card h3,
+body.light-theme .service-card h3,
+body.light-theme .feature-card h3,
+body.light-theme .pricing-card h3,
+body.light-theme .contact-card h3,
+body.light-theme .service-card h3 {
+    color: #101a2c !important;
+}
+
+body.light-mode .feature-card p,
+body.light-mode .pricing-card p,
+body.light-mode .contact-card p,
+body.light-mode .service-card p,
+body.light-theme .feature-card p,
+body.light-theme .pricing-card p,
+body.light-theme .contact-card p,
+body.light-theme .service-card p {
+    color: #5b6b80 !important;
+}
+
+
+/* =========================================================
+   8. BUTTONS
+========================================================= */
+
+body.light-mode .nav-btn,
+body.light-theme .nav-btn,
+body[data-theme="light"] .nav-btn {
+    background: linear-gradient(135deg,
+            #35bdf4,
+            #159bd7) !important;
+
+    color: #ffffff !important;
+
+    box-shadow:
+        0 8px 22px rgba(21, 155, 215, 0.22) !important;
+}
+
+body.light-mode .hero button,
+body.light-mode .hero .btn,
+body.light-theme .hero button,
+body.light-theme .hero .btn,
+body[data-theme="light"] .hero button,
+body[data-theme="light"] .hero .btn {
+    color: #ffffff !important;
+}
+
+
+/* Outline button */
+body.light-mode .hero .outline-btn,
+body.light-mode .hero .secondary-btn,
+body.light-theme .hero .outline-btn,
+body.light-theme .hero .secondary-btn,
+body[data-theme="light"] .hero .outline-btn,
+body[data-theme="light"] .hero .secondary-btn {
+    color: #18243a !important;
+    border-color: #18243a !important;
+    background: transparent !important;
+}
+
+
+/* =========================================================
+   9. THEME TOGGLE
+========================================================= */
+
+body.light-mode .theme-toggle,
+body.light-mode .theme-btn,
+body.light-mode #theme-toggle,
+body.light-theme .theme-toggle,
+body.light-theme .theme-btn,
+body.light-theme #theme-toggle,
+body[data-theme="light"] .theme-toggle,
+body[data-theme="light"] .theme-btn,
+body[data-theme="light"] #theme-toggle {
+    flex: 0 0 34px !important;
+    width: 34px !important;
+    min-width: 34px !important;
+    height: 34px !important;
+    min-height: 34px !important;
+
+    padding: 0 !important;
+    border-radius: 50% !important;
+    aspect-ratio: 1 / 1 !important;
+    flex-shrink: 0 !important;
+
+    background: #ffffff !important;
+    color: #172033 !important;
+    border: 1px solid rgba(15, 23, 42, 0.14) !important;
+}
+
+
+/* =========================================================
+   10. MOBILE LIGHT THEME
+========================================================= */
+
+@media (max-width: 768px) {
+
+    body.light-mode,
+    body.light-theme,
+    body[data-theme="light"] {
+        background:
+            linear-gradient(145deg,
+                #f8fbff,
+                #eaf2fb) !important;
+    }
+
+    body.light-mode .ai-preview,
+    body.light-theme .ai-preview,
+    body[data-theme="light"] .ai-preview {
+        background:
+            linear-gradient(145deg,
+                #10213f,
+                #18345e) !important;
+
+        box-shadow:
+            0 0 28px rgba(56, 189, 248, 0.28),
+            0 18px 45px rgba(15, 23, 42, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
+    }
+}
+
+/* =========================================================
+   LIGHT THEME — NAVY HOME FEATURE CARDS
+========================================================= */
+
+/* Home feature cards */
+body.light-mode .home-feature-card,
+body.light-theme .home-feature-card,
+body[data-theme="light"] .home-feature-card,
+body.light-mode .home-features .card,
+body.light-theme .home-features .card,
+body[data-theme="light"] .home-features .card {
+    background:
+        linear-gradient(145deg,
+            #142b50 0%,
+            #10213f 55%,
+            #0b1930 100%) !important;
+
+    color: #ffffff !important;
+
+    border: 1px solid rgba(75, 190, 255, 0.28) !important;
+
+    box-shadow:
+        0 12px 30px rgba(8, 22, 45, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+
+/* Text inside home feature cards */
+body.light-mode .home-feature-card h1,
+body.light-mode .home-feature-card h2,
+body.light-mode .home-feature-card h3,
+body.light-mode .home-feature-card h4,
+body.light-mode .home-feature-card p,
+body.light-mode .home-feature-card span,
+body.light-mode .home-feature-card strong,
+body.light-mode .home-feature-card small,
+
+body.light-theme .home-feature-card h1,
+body.light-theme .home-feature-card h2,
+body.light-theme .home-feature-card h3,
+body.light-theme .home-feature-card h4,
+body.light-theme .home-feature-card p,
+body.light-theme .home-feature-card span,
+body.light-theme .home-feature-card strong,
+body.light-theme .home-feature-card small,
+
+body[data-theme="light"] .home-feature-card h1,
+body[data-theme="light"] .home-feature-card h2,
+body[data-theme="light"] .home-feature-card h3,
+body[data-theme="light"] .home-feature-card h4,
+body[data-theme="light"] .home-feature-card p,
+body[data-theme="light"] .home-feature-card span,
+body[data-theme="light"] .home-feature-card strong,
+body[data-theme="light"] .home-feature-card small {
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   ALL DIVS WITH class="card"
+========================================================= */
+
+body.light-mode div.card,
+body.light-theme div.card,
+body[data-theme="light"] div.card {
+    background:
+        linear-gradient(145deg,
+            #142b50 0%,
+            #10213f 55%,
+            #0b1930 100%) !important;
+
+    color: #ffffff !important;
+
+    border: 1px solid rgba(75, 190, 255, 0.28) !important;
+
+    box-shadow:
+        0 12px 30px rgba(8, 22, 45, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+
+/* Make every text element inside div.card white */
+body.light-mode div.card h1,
+body.light-mode div.card h2,
+body.light-mode div.card h3,
+body.light-mode div.card h4,
+body.light-mode div.card h5,
+body.light-mode div.card h6,
+body.light-mode div.card p,
+body.light-mode div.card span,
+body.light-mode div.card strong,
+body.light-mode div.card small,
+body.light-mode div.card li,
+body.light-mode div.card label,
+
+body.light-theme div.card h1,
+body.light-theme div.card h2,
+body.light-theme div.card h3,
+body.light-theme div.card h4,
+body.light-theme div.card h5,
+body.light-theme div.card h6,
+body.light-theme div.card p,
+body.light-theme div.card span,
+body.light-theme div.card strong,
+body.light-theme div.card small,
+body.light-theme div.card li,
+body.light-theme div.card label,
+
+body[data-theme="light"] div.card h1,
+body[data-theme="light"] div.card h2,
+body[data-theme="light"] div.card h3,
+body[data-theme="light"] div.card h4,
+body[data-theme="light"] div.card h5,
+body[data-theme="light"] div.card h6,
+body[data-theme="light"] div.card p,
+body[data-theme="light"] div.card span,
+body[data-theme="light"] div.card strong,
+body[data-theme="light"] div.card small,
+body[data-theme="light"] div.card li,
+body[data-theme="light"] div.card label {
+    color: #ffffff !important;
+}
+
+
+/* Keep icons and accents blue/cyan */
+body.light-mode div.card i,
+body.light-mode div.card svg,
+body.light-mode div.card .icon,
+body.light-mode div.card .card-icon,
+body.light-theme div.card i,
+body.light-theme div.card svg,
+body.light-theme div.card .icon,
+body.light-theme div.card .card-icon,
+body[data-theme="light"] div.card i,
+body[data-theme="light"] div.card svg,
+body[data-theme="light"] div.card .icon,
+body[data-theme="light"] div.card .card-icon {
+    color: #52c8ff !important;
+}
+
+
+/* Optional hover effect */
+body.light-mode div.card:hover,
+body.light-theme div.card:hover,
+body[data-theme="light"] div.card:hover {
+    border-color: rgba(82, 200, 255, 0.65) !important;
+
+    box-shadow:
+        0 0 28px rgba(56, 189, 248, 0.18),
+        0 16px 35px rgba(8, 22, 45, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+/* POWERFUL FEATURES label */
+.section-badge {
+    background: #10213f !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(82, 200, 255, 0.35) !important;
+}
+
+/* =========================================================
+   NOVA AI — LANDSCAPE DASHBOARD FIX
+========================================================= */
+
+.ai-preview {
+    width: min(100%, 820px) !important;
+    max-width: 100% !important;
+
+    /* Wider and shorter */
+    aspect-ratio: 18 / 15 !important;
+
+    padding: 22px !important;
+    min-height: 0 !important;
+
+    /* Keep your 3D appearance */
+    transform:
+        perspective(1400px) rotateY(-6deg) rotateX(2deg) rotateZ(2deg) !important;
+}
+
+/* Keep the inside content compact */
+.preview-stats {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px !important;
+    margin-bottom: 12px !important;
+}
+
+.preview-stats>div {
+    padding: 12px !important;
+}
+
+.preview-stats strong {
+    font-size: 20px !important;
+}
+
+.preview-ai {
+    margin-top: 10px !important;
+    padding: 13px !important;
+}
+
+.preview-progress {
+    margin-top: 10px !important;
+    padding: 13px !important;
+}
+
+/* Desktop: give the dashboard more horizontal presence */
+@media (min-width: 769px) {
+    .hero-visual {
+        width: 100% !important;
+        max-width: 900px !important;
+    }
+
+    .ai-preview {
+        margin-left: auto !important;
+        margin-right: 0 !important;
+    }
+}
+
+/* Tablet and mobile: prevent sideways scrolling */
+@media (max-width: 768px) {
+    .ai-preview {
+        width: 100% !important;
+        max-width: 100% !important;
+
+        /* Still landscape, but not excessively tall */
+        aspect-ratio: 16 / 9 !important;
+
+        padding: 15px !important;
+        transform: none !important;
+    }
+
+    .preview-stats {
+        gap: 8px !important;
+    }
+
+    .preview-stats>div {
+        padding: 9px !important;
+    }
+
+    .preview-stats strong {
+        font-size: 16px !important;
+    }
+
+    .preview-ai,
+    .preview-progress {
+        padding: 10px !important;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 420px) {
+    .ai-preview {
+        aspect-ratio: 16 / 10 !important;
+        padding: 12px !important;
+    }
+
+    .preview-stats {
+        gap: 6px !important;
+    }
+
+    .preview-stats>div {
+        padding: 7px !important;
+    }
+
+    .preview-stats strong {
+        font-size: 14px !important;
+    }
+}
+
+/* =========================================================
+   WIDER DASHBOARD — NO ASPECT-RATIO
+========================================================= */
+
+.ai-preview {
+    width: min(100%, 900px) !important;
+    max-width: 100% !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+
+    /* Keep your existing padding and rounded corners */
+    padding: 24px !important;
+    border-radius: 28px !important;
+}
+
+/* Let the dashboard container expand horizontally */
+.hero-visual {
+    width: 100% !important;
+    max-width: 950px !important;
+    min-width: 0 !important;
+}
+
+/* Desktop positioning and 3D effect */
+@media (min-width: 769px) {
+    .ai-preview {
+        margin-left: auto !important;
+        margin-right: 0 !important;
+
+        transform:
+            perspective(1400px) rotateY(-6deg) rotateX(2deg) rotateZ(2deg) !important;
+    }
+}
+
+/* Mobile safety */
+@media (max-width: 768px) {
+    .hero-visual {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .ai-preview {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        padding: 16px !important;
+        transform: none !important;
+    }
+}
+
+/* =========================================
+   NOVA AI ACTIVE DASHBOARD
+========================================= */
+
+.dashboard-main {
+    width: 100%;
+    min-width: 0;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Dashboard greeting */
+
+.dashboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.dashboard-label {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: #67d8ff;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.dashboard-header h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(18px, 2vw, 26px);
+    line-height: 1.2;
+    font-weight: 750;
+}
+
+.dashboard-header p {
+    margin: 9px 0 0;
+    color: rgba(225, 238, 255, 0.62);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* User profile */
+
+.dashboard-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border: 1px solid rgba(130, 190, 255, 0.16);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.055);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.07),
+        0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.dashboard-avatar {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #168bff, #7b5cff);
+    box-shadow: 0 0 18px rgba(55, 170, 255, 0.35);
+}
+
+.dashboard-user strong,
+.dashboard-user small {
+    display: block;
+}
+
+.dashboard-user strong {
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.dashboard-user small {
+    margin-top: 3px;
+    color: #7ddcff;
+    font-size: 10px;
+}
+
+.dashboard-user>span {
+    margin-left: 5px;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+/* Statistics */
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.dashboard-stat {
+    min-width: 0;
+    padding: 17px;
+    border: 1px solid rgba(117, 190, 255, 0.16);
+    border-radius: 17px;
+    background:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, 0.095),
+            rgba(255, 255, 255, 0.025));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.07),
+        0 12px 30px rgba(0, 0, 0, 0.12);
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+.dashboard-stat:hover {
+    transform: translateY(-4px);
+    border-color: rgba(93, 202, 255, 0.48);
+    background:
+        linear-gradient(145deg,
+            rgba(64, 161, 255, 0.16),
+            rgba(255, 255, 255, 0.035));
+}
+
+.dashboard-stat>span {
+    display: block;
+    color: rgba(225, 238, 255, 0.62);
+    font-size: 10px;
+    line-height: 1.4;
+}
+
+.dashboard-stat strong {
+    display: block;
+    margin: 10px 0 7px;
+    color: #ffffff;
+    font-size: clamp(21px, 2.5vw, 31px);
+    line-height: 1;
+    letter-spacing: -0.8px;
+}
+
+.dashboard-stat small {
+    color: #65e6b0;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* Middle dashboard cards */
+
+.dashboard-middle {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 15px;
+}
+
+.dashboard-ai-card,
+.dashboard-activity {
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid rgba(117, 190, 255, 0.16);
+    border-radius: 19px;
+    background:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, 0.085),
+            rgba(255, 255, 255, 0.025));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.07),
+        0 14px 35px rgba(0, 0, 0, 0.13);
+}
+
+/* AI Assistant card */
+
+.ai-card-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ai-card-icon {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #168bff, #765cff);
+    box-shadow: 0 0 22px rgba(62, 155, 255, 0.3);
+}
+
+.ai-card-title strong,
+.ai-card-title small {
+    display: block;
+}
+
+.ai-card-title strong {
+    color: #ffffff;
+    font-size: 13px;
+}
+
+.ai-card-title small {
+    margin-top: 4px;
+    color: #64e5b0;
+    font-size: 10px;
+}
+
+.dashboard-ai-card p {
+    margin: 18px 0;
+    color: rgba(225, 238, 255, 0.68);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.dashboard-ai-card button {
+    border: 1px solid rgba(98, 205, 255, 0.3);
+    border-radius: 10px;
+    padding: 10px 13px;
+    color: #ffffff;
+    background: rgba(47, 159, 255, 0.13);
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.dashboard-ai-card button:hover {
+    background: rgba(47, 159, 255, 0.25);
+    border-color: rgba(98, 205, 255, 0.65);
+}
+
+/* Activity */
+
+.activity-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.activity-heading strong {
+    color: #ffffff;
+    font-size: 13px;
+}
+
+.activity-heading span {
+    color: #65cfff;
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+.dashboard-activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.dashboard-activity-item:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.dashboard-activity-item>b {
+    width: 27px;
+    height: 27px;
+    flex: 0 0 27px;
+    display: grid;
+    place-items: center;
+    border-radius: 9px;
+    color: #71ddff;
+    background: rgba(57, 174, 255, 0.13);
+    font-size: 12px;
+}
+
+.dashboard-activity-item strong,
+.dashboard-activity-item small {
+    display: block;
+}
+
+.dashboard-activity-item strong {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 11px;
+    line-height: 1.45;
+}
+
+.dashboard-activity-item small {
+    margin-top: 4px;
+    color: rgba(225, 238, 255, 0.48);
+    font-size: 10px;
+}
+
+/* Quick actions */
+
+.quick-actions-title {
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 750;
+}
+
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.quick-actions>div {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px;
+    border: 1px solid rgba(117, 190, 255, 0.15);
+    border-radius: 14px;
+    color: #75d9ff;
+    background: rgba(255, 255, 255, 0.045);
+    font-size: 13px;
+    cursor: pointer;
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.quick-actions>div:hover {
+    transform: translateY(-3px);
+    border-color: rgba(91, 205, 255, 0.5);
+    background: rgba(55, 166, 255, 0.13);
+}
+
+.quick-actions>div span {
+    min-width: 0;
+    flex: 1;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 11px;
+    font-weight: 650;
+}
+
+.quick-actions>div {
+    white-space: nowrap;
+}
+
+/* =========================================
+   DASHBOARD RESPONSIVENESS
+========================================= */
+
+@media (max-width: 900px) {
+    .dashboard-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .quick-actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 650px) {
+    .dashboard-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .dashboard-user {
+        width: 100%;
+    }
+
+    .dashboard-middle {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-stat {
+        padding: 14px;
+    }
+
+    .dashboard-stat strong {
+        font-size: 25px;
+    }
+
+    .quick-actions>div {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 420px) {
+    .dashboard-stats {
+        gap: 9px;
+    }
+
+    .dashboard-stat>span {
+        font-size: 9px;
+    }
+
+    .dashboard-stat strong {
+        font-size: 22px;
+    }
+
+    .quick-actions {
+        gap: 9px;
+    }
+
+    .quick-actions>div {
+        gap: 5px;
+        font-size: 11px;
+    }
+
+    .quick-actions>div span {
+        font-size: 10px;
+    }
+}
+
+.ai-preview {
+    width: min(100%, 900px) !important;
+    max-width: 100% !important;
+    height: auto !important;
+    aspect-ratio: auto !important;
+    min-width: 0 !important;
+    overflow: hidden;
+}
+
+.dashboard-main,
+.dashboard-header,
+.dashboard-stats,
+.dashboard-middle,
+.quick-actions {
+    max-width: 100%;
+    min-width: 0;
+}
+
+.dashboard-stats>*,
+.dashboard-middle>*,
+.quick-actions>* {
+    min-width: 0;
+}
+
+
+/* =====================================================
+   NOVA AI — SLEEK 3D GLASS DASHBOARD
+   FINAL VISUAL OVERRIDE
+===================================================== */
+
+/* Main outer glass frame */
+
+.ai-preview {
+    position: relative;
+    isolation: isolate;
+    width: min(100%, 900px) !important;
+    max-width: 900px !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 500px;
+    padding: 25px !important;
+
+    border: 1px solid rgba(112, 202, 255, 0.58) !important;
+    border-radius: 30px !important;
+
+    background:
+        linear-gradient(145deg,
+            rgba(30, 65, 125, 0.58),
+            rgba(7, 18, 43, 0.78) 45%,
+            rgba(2, 10, 27, 0.92)) !important;
+
+    box-shadow:
+        0 0 0 1px rgba(100, 190, 255, 0.14),
+        0 0 24px rgba(45, 161, 255, 0.62),
+        0 0 70px rgba(0, 112, 255, 0.48),
+        0 0 135px rgba(0, 72, 255, 0.26),
+        0 32px 75px rgba(0, 0, 0, 0.58),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22),
+        inset 0 -1px 0 rgba(75, 167, 255, 0.2);
+
+    transform:
+        perspective(1600px) rotateY(-8deg) rotateX(5deg) rotateZ(1deg) !important;
+
+    transform-style: preserve-3d;
+    transition:
+        transform 0.5s ease,
+        box-shadow 0.5s ease;
+}
+
+/* Floating movement on desktop */
+
+@media (min-width: 769px) {
+    .ai-preview:hover {
+        transform:
+            perspective(1600px) rotateY(-5deg) rotateX(3deg) rotateZ(0.5deg) translateY(-5px) !important;
+
+        box-shadow:
+            0 0 0 1px rgba(100, 210, 255, 0.2),
+            0 0 32px rgba(45, 161, 255, 0.8),
+            0 0 90px rgba(0, 112, 255, 0.58),
+            0 0 160px rgba(0, 72, 255, 0.3),
+            0 40px 85px rgba(0, 0, 0, 0.62),
+            inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    }
+}
+
+/* Active glow behind the dashboard */
+
+.ai-preview::before {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    inset: -55px -75px -65px;
+
+    border-radius: 45px;
+
+    background:
+        radial-gradient(ellipse at center,
+            rgba(0, 157, 255, 0.58) 0%,
+            rgba(0, 91, 255, 0.34) 35%,
+            rgba(0, 47, 180, 0.16) 58%,
+            transparent 78%);
+
+    filter: blur(25px);
+    opacity: 0.95;
+    pointer-events: none;
+}
+
+/* Bright lower blue light */
+
+.ai-preview::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 5%;
+    right: 5%;
+    bottom: -38px;
+    height: 75px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(ellipse,
+            rgba(0, 180, 255, 0.75),
+            rgba(0, 90, 255, 0.3) 42%,
+            transparent 75%);
+
+    filter: blur(17px);
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+/* Inner dashboard follows the same open-book direction */
+
+.ai-preview .dashboard-main {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    padding: 0 !important;
+
+    transform:
+        translateZ(22px) rotateY(0deg) rotateX(0deg);
+
+    transform-style: preserve-3d;
+}
+
+/* Glass surface across the inside */
+
+.ai-preview .dashboard-main::before {
+    content: "";
+    position: absolute;
+    inset: -12px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.08),
+            transparent 35%,
+            rgba(0, 136, 255, 0.06));
+
+    border: 1px solid rgba(151, 220, 255, 0.09);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -20px 50px rgba(0, 0, 0, 0.12);
+
+    pointer-events: none;
+}
+
+/* Dashboard header */
+
+.ai-preview .dashboard-header {
+    position: relative;
+    z-index: 2;
+}
+
+/* Glass statistics */
+
+.ai-preview .dashboard-stat {
+    position: relative;
+    overflow: hidden;
+
+    background:
+        linear-gradient(145deg,
+            rgba(91, 166, 255, 0.17),
+            rgba(255, 255, 255, 0.045) 48%,
+            rgba(0, 15, 42, 0.35)) !important;
+
+    border: 1px solid rgba(126, 207, 255, 0.2) !important;
+    border-radius: 15px !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.11),
+        inset 0 -12px 25px rgba(0, 0, 0, 0.12),
+        0 8px 22px rgba(0, 0, 0, 0.14);
+}
+
+/* Soft shine inside each stat card */
+
+.ai-preview .dashboard-stat::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 12%;
+    width: 65%;
+    height: 1px;
+
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(174, 232, 255, 0.65),
+            transparent);
+
+    opacity: 0.8;
+}
+
+/* Middle glass cards */
+
+.ai-preview .dashboard-ai-card,
+.ai-preview .dashboard-activity {
+    background:
+        linear-gradient(145deg,
+            rgba(68, 139, 230, 0.16),
+            rgba(255, 255, 255, 0.045) 50%,
+            rgba(0, 13, 35, 0.38)) !important;
+
+    border: 1px solid rgba(126, 207, 255, 0.18) !important;
+    border-radius: 18px !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -15px 30px rgba(0, 0, 0, 0.12),
+        0 12px 28px rgba(0, 0, 0, 0.16);
+}
+
+/* User profile glass */
+
+.ai-preview .dashboard-user {
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.12),
+            rgba(255, 255, 255, 0.035)) !important;
+
+    border: 1px solid rgba(132, 210, 255, 0.2) !important;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        0 8px 22px rgba(0, 0, 0, 0.16);
+}
+
+/* Quick action glass buttons */
+
+.ai-preview .quick-actions>div {
+    background:
+        linear-gradient(145deg,
+            rgba(75, 157, 255, 0.13),
+            rgba(255, 255, 255, 0.035)) !important;
+
+    border: 1px solid rgba(126, 207, 255, 0.16) !important;
+    border-radius: 13px !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Keep the dashboard landscape on wide screens */
+
+@media (min-width: 769px) {
+    .ai-preview .dashboard-stats {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    }
+
+    .ai-preview .dashboard-middle {
+        grid-template-columns:
+            minmax(0, 0.9fr) minmax(0, 1.1fr) !important;
+    }
+
+    .ai-preview .quick-actions {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    }
+}
+
+/* Tablet */
+
+@media (max-width: 900px) and (min-width: 769px) {
+    .ai-preview {
+        padding: 20px !important;
+        min-height: 450px;
+    }
+
+    .ai-preview .dashboard-stat {
+        padding: 13px !important;
+    }
+
+    .ai-preview .dashboard-stat strong {
+        font-size: 22px;
+    }
+}
+
+/* Mobile: remove the 3D tilt so it does not overflow sideways */
+
+@media (max-width: 768px) {
+    .ai-preview {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: 0;
+        padding: 16px !important;
+
+        transform: none !important;
+        border-radius: 23px !important;
+    }
+
+    .ai-preview::before {
+        inset: -25px -30px -35px;
+        filter: blur(20px);
+    }
+
+    .ai-preview::after {
+        bottom: -25px;
+        filter: blur(13px);
+    }
+
+    .ai-preview .dashboard-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .ai-preview .dashboard-middle {
+        grid-template-columns: 1fr !important;
+    }
+
+    .ai-preview .quick-actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .ai-preview .dashboard-header {
+        gap: 14px;
+    }
+}
+
+/* Small phones */
+
+@media (max-width: 420px) {
+    .ai-preview {
+        padding: 12px !important;
+    }
+
+    .ai-preview .dashboard-stat {
+        padding: 12px !important;
+        border-radius: 12px !important;
+    }
+
+    .ai-preview .dashboard-stat strong {
+        font-size: 21px;
+    }
+
+    .ai-preview .dashboard-ai-card,
+    .ai-preview .dashboard-activity {
+        padding: 15px !important;
+    }
+}
+
+
+/* =====================================================
+   NOVA AI — LANDSCAPE DASHBOARD FIX
+===================================================== */
+
+/* Wide desktop glass screen */
+
+@media (min-width: 769px) {
+
+    .ai-preview {
+        width: min(100%, 920px) !important;
+        max-width: 920px !important;
+
+        height: 510px !important;
+        min-height: 0 !important;
+
+        padding: 18px !important;
+        box-sizing: border-box;
+
+        overflow: hidden !important;
+
+        border-radius: 30px !important;
+
+        transform:
+            perspective(1600px) rotateY(-8deg) rotateX(5deg) rotateZ(1deg) !important;
+    }
+
+    /* Compact dashboard spacing */
+
+    .ai-preview .dashboard-main {
+        width: 100%;
+        height: 100%;
+        min-width: 0;
+
+        display: flex;
+        flex-direction: column;
+        gap: 12px !important;
+    }
+
+    /* Compact header */
+
+    .ai-preview .dashboard-header {
+        gap: 12px !important;
+        min-height: 45px;
+    }
+
+    .ai-preview .dashboard-label {
+        margin-bottom: 4px !important;
+        font-size: 8px !important;
+        letter-spacing: 1.5px;
+    }
+
+    .ai-preview .dashboard-header h3 {
+        font-size: 17px !important;
+        line-height: 1.15;
+    }
+
+    .ai-preview .dashboard-header p {
+        margin-top: 5px !important;
+        font-size: 9px !important;
+        line-height: 1.35;
+    }
+
+    /* Smaller user profile */
+
+    .ai-preview .dashboard-user {
+        gap: 7px !important;
+        padding: 6px 9px !important;
+        border-radius: 11px !important;
+    }
+
+    .ai-preview .dashboard-avatar {
+        width: 27px !important;
+        height: 27px !important;
+        flex-basis: 27px !important;
+        font-size: 11px !important;
+    }
+
+    .ai-preview .dashboard-user strong {
+        font-size: 10px !important;
+    }
+
+    .ai-preview .dashboard-user small {
+        margin-top: 2px !important;
+        font-size: 8px !important;
+    }
+
+    /* Four statistics in one horizontal row */
+
+    .ai-preview .dashboard-stats {
+        display: grid !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 9px !important;
+    }
+
+    .ai-preview .dashboard-stat {
+        padding: 11px !important;
+        border-radius: 12px !important;
+    }
+
+    .ai-preview .dashboard-stat>span {
+        font-size: 8px !important;
+        white-space: nowrap;
+    }
+
+    .ai-preview .dashboard-stat strong {
+        margin: 7px 0 5px !important;
+        font-size: 21px !important;
+        letter-spacing: -0.5px;
+    }
+
+    .ai-preview .dashboard-stat small {
+        font-size: 8px !important;
+    }
+
+    /* Middle cards remain side by side */
+
+    .ai-preview .dashboard-middle {
+        display: grid !important;
+        grid-template-columns:
+            minmax(0, 0.85fr) minmax(0, 1.15fr) !important;
+
+        gap: 10px !important;
+    }
+
+    .ai-preview .dashboard-ai-card,
+    .ai-preview .dashboard-activity {
+        padding: 13px !important;
+        border-radius: 14px !important;
+    }
+
+    /* AI Assistant */
+
+    .ai-preview .ai-card-title {
+        gap: 7px !important;
+    }
+
+    .ai-preview .ai-card-icon {
+        width: 28px !important;
+        height: 28px !important;
+        flex-basis: 28px !important;
+        border-radius: 9px !important;
+        font-size: 12px !important;
+    }
+
+    .ai-preview .ai-card-title strong {
+        font-size: 10px !important;
+    }
+
+    .ai-preview .ai-card-title small {
+        margin-top: 2px !important;
+        font-size: 8px !important;
+    }
+
+    .ai-preview .dashboard-ai-card p {
+        margin: 10px 0 !important;
+        font-size: 9px !important;
+        line-height: 1.45;
+    }
+
+    .ai-preview .dashboard-ai-card button {
+        padding: 7px 9px !important;
+        border-radius: 8px !important;
+        font-size: 9px !important;
+    }
+
+    /* Recent activity */
+
+    .ai-preview .activity-heading {
+        margin-bottom: 7px !important;
+    }
+
+    .ai-preview .activity-heading strong {
+        font-size: 10px !important;
+    }
+
+    .ai-preview .activity-heading span {
+        font-size: 8px !important;
+    }
+
+    .ai-preview .dashboard-activity-item {
+        gap: 7px !important;
+        padding: 7px 0 !important;
+    }
+
+    .ai-preview .dashboard-activity-item>b {
+        width: 21px !important;
+        height: 21px !important;
+        flex-basis: 21px !important;
+        border-radius: 7px !important;
+        font-size: 9px !important;
+    }
+
+    .ai-preview .dashboard-activity-item strong {
+        font-size: 8px !important;
+        line-height: 1.3;
+    }
+
+    .ai-preview .dashboard-activity-item small {
+        margin-top: 2px !important;
+        font-size: 7px !important;
+    }
+
+    /* Quick actions in one row */
+
+    .ai-preview .quick-actions-title {
+        font-size: 10px !important;
+    }
+
+    .ai-preview .quick-actions {
+        display: grid !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 9px !important;
+    }
+
+    .ai-preview .quick-actions>div {
+        min-width: 0;
+        padding: 10px !important;
+        gap: 5px !important;
+        border-radius: 10px !important;
+        font-size: 10px !important;
+    }
+
+    .ai-preview .quick-actions>div span {
+        font-size: 8px !important;
+    }
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1100px) and (min-width: 769px) {
+
+    .ai-preview {
+        height: 480px !important;
+        padding: 15px !important;
+    }
+
+    .ai-preview .dashboard-stat strong {
+        font-size: 18px !important;
+    }
+
+    .ai-preview .dashboard-header h3 {
+        font-size: 15px !important;
+    }
+
+    .ai-preview .dashboard-stat {
+        padding: 9px !important;
+    }
+}
+
+
+/* =====================================================
+   MOBILE RESET
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .ai-preview {
+        width: 100% !important;
+        max-width: 100% !important;
+
+        height: auto !important;
+        min-height: 0 !important;
+
+        padding: 14px !important;
+        overflow: hidden !important;
+
+        transform: none !important;
+    }
+
+    .ai-preview .dashboard-main {
+        height: auto !important;
+        gap: 15px !important;
+    }
+
+    .ai-preview .dashboard-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .ai-preview .dashboard-middle {
+        grid-template-columns: 1fr !important;
+    }
+
+    .ai-preview .quick-actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .ai-preview .dashboard-header h3 {
+        font-size: 18px !important;
+    }
+}
+
+/* =====================================================
+   NOVA AI — FULL GLOWING CURVED SCREEN EDGE
+===================================================== */
+
+/* Remove the dull-looking inner frame */
+
+.ai-preview .dashboard-main::before {
+    content: none !important;
+}
+
+/* Outer curved screen */
+
+.ai-preview {
+    position: relative;
+    isolation: isolate;
+
+    border: 1px solid rgba(112, 210, 255, 0.98) !important;
+    border-radius: 30px !important;
+
+    background:
+        linear-gradient(145deg,
+            rgba(34, 72, 139, 0.62),
+            rgba(7, 18, 44, 0.78) 48%,
+            rgba(2, 9, 26, 0.94)) !important;
+
+    box-shadow:
+        /* Bright continuous edge */
+        0 0 0 1px rgba(78, 190, 255, 0.75),
+
+        /* Glow close to the border */
+        0 0 8px rgba(80, 202, 255, 0.95),
+
+        /* Strong blue halo */
+        0 0 22px rgba(25, 157, 255, 0.82),
+
+        /* Wide active background glow */
+        0 0 55px rgba(0, 115, 255, 0.62),
+        0 0 110px rgba(0, 72, 255, 0.36),
+
+        /* Grounded shadow */
+        0 32px 70px rgba(0, 0, 0, 0.62),
+
+        /* Glass highlights */
+        inset 0 1px 0 rgba(255, 255, 255, 0.28),
+        inset 0 -1px 0 rgba(70, 190, 255, 0.5);
+
+    transform:
+        perspective(1600px) rotateY(-8deg) rotateX(5deg) rotateZ(1deg) !important;
+
+    transform-style: preserve-3d;
+}
+
+/* Make the outer edge glow stronger without adding another line */
+
+.ai-preview::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -18px;
+
+    border-radius: 43px;
+
+    background:
+        radial-gradient(ellipse at center,
+            rgba(0, 153, 255, 0.42) 0%,
+            rgba(0, 100, 255, 0.26) 38%,
+            transparent 72%);
+
+    filter: blur(23px);
+    opacity: 1;
+    pointer-events: none;
+}
+
+/* Bright reflected light underneath */
+
+.ai-preview::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 3%;
+    right: 3%;
+    bottom: -42px;
+    height: 80px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(ellipse,
+            rgba(0, 190, 255, 0.9) 0%,
+            rgba(0, 123, 255, 0.5) 35%,
+            transparent 76%);
+
+    filter: blur(18px);
+    opacity: 1;
+    pointer-events: none;
+}
+
+/* Remove dull borders from the internal dashboard */
+
+.ai-preview .dashboard-stat,
+.ai-preview .dashboard-ai-card,
+.ai-preview .dashboard-activity,
+.ai-preview .dashboard-user,
+.ai-preview .quick-actions>div {
+    border-color: rgba(115, 190, 255, 0.13) !important;
+}
+
+/* Keep inner cards glassy, not outlined */
+
+.ai-preview .dashboard-stat,
+.ai-preview .dashboard-ai-card,
+.ai-preview .dashboard-activity,
+.ai-preview .quick-actions>div {
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -12px 25px rgba(0, 0, 0, 0.12),
+        0 8px 22px rgba(0, 0, 0, 0.13) !important;
+}
+
+/* Stronger corner glow */
+
+.ai-preview {
+    filter:
+        drop-shadow(0 0 5px rgba(80, 205, 255, 0.6)) drop-shadow(0 0 18px rgba(0, 120, 255, 0.28));
+}
+
+/* Keep the glow controlled on mobile */
+
+@media (max-width: 768px) {
+    .ai-preview {
+        border-radius: 24px !important;
+
+        border-color: rgba(112, 210, 255, 0.9) !important;
+
+        box-shadow:
+            0 0 0 1px rgba(78, 190, 255, 0.5),
+            0 0 10px rgba(80, 202, 255, 0.7),
+            0 0 30px rgba(0, 115, 255, 0.42),
+            0 22px 45px rgba(0, 0, 0, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+
+        filter: none;
+    }
+
+    .ai-preview::before {
+        inset: -12px;
+        filter: blur(17px);
+    }
+
+    .ai-preview::after {
+        bottom: -25px;
+        height: 55px;
+        filter: blur(14px);
+    }
+}
+
+/* =====================================================
+   NOVA AI — SLEEK OPEN-BOOK SCREEN PERSPECTIVE
+===================================================== */
+
+/* Give the screen room to transform */
+
+.hero-visual {
+    width: 100%;
+    max-width: 950px;
+    min-width: 0;
+    perspective: 1500px;
+    perspective-origin: 50% 50%;
+}
+
+/* Main screen */
+
+.ai-preview {
+    position: relative;
+    isolation: isolate;
+    transform-origin: 50% 50% !important;
+    transform-style: preserve-3d !important;
+
+    /*
+       Stronger open-book style:
+       - rotateY gives the depth
+       - rotateX leans the screen backward
+       - rotateZ gives the slight diagonal angle
+       - skewY helps the top and bottom edges feel dynamic
+    */
+
+    transform:
+        perspective(1500px) rotateY(-17deg) rotateX(8deg) rotateZ(1.2deg) skewY(-1deg) !important;
+
+    transition:
+        transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1),
+        box-shadow 0.55s ease !important;
+
+    transform-style: preserve-3d !important;
+}
+
+/* More elegant movement when hovering */
+
+@media (min-width: 769px) {
+    .ai-preview:hover {
+        transform:
+            perspective(1500px) rotateY(-12deg) rotateX(5deg) rotateZ(0.7deg) skewY(-0.6deg) translateY(-7px) !important;
+    }
+}
+
+/* Make the dashboard content sit slightly above the glass */
+
+.ai-preview .dashboard-main {
+    position: relative;
+    z-index: 5;
+
+    transform:
+        translateZ(30px) rotateY(1deg) rotateX(-0.5deg) !important;
+
+    transform-style: preserve-3d !important;
+}
+
+/* Lift the top area for a more dimensional screen */
+
+.ai-preview .dashboard-header,
+.ai-preview .dashboard-stats,
+.ai-preview .dashboard-middle,
+.ai-preview .quick-actions-title,
+.ai-preview .quick-actions {
+    position: relative;
+    z-index: 6;
+    transform: translateZ(12px);
+}
+
+/* Slight depth difference between dashboard layers */
+
+.ai-preview .dashboard-stat {
+    transform: translateZ(8px);
+}
+
+.ai-preview .dashboard-ai-card,
+.ai-preview .dashboard-activity {
+    transform: translateZ(10px);
+}
+
+.ai-preview .quick-actions>div {
+    transform: translateZ(8px);
+}
+
+/* Preserve the curved screen silhouette */
+
+.ai-preview {
+    border-radius:
+        32px 25px 34px 24px !important;
+
+    overflow: hidden !important;
+}
+
+/* Add a soft glass reflection, not a border */
+
+.ai-preview .dashboard-main::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(118deg,
+            rgba(255, 255, 255, 0.13) 0%,
+            rgba(255, 255, 255, 0.035) 18%,
+            transparent 42%,
+            transparent 75%,
+            rgba(73, 182, 255, 0.055) 100%);
+
+    pointer-events: none;
+    z-index: 20;
+}
+
+/* Desktop sizing */
+
+@media (min-width: 1101px) {
+    .ai-preview {
+        width: min(100%, 920px) !important;
+        max-width: 920px !important;
+    }
+}
+
+/* Tablet */
+
+@media (max-width: 1100px) and (min-width: 769px) {
+    .ai-preview {
+        transform:
+            perspective(1300px) rotateY(-12deg) rotateX(6deg) rotateZ(1deg) skewY(-0.8deg) !important;
+    }
+
+    .ai-preview:hover {
+        transform:
+            perspective(1300px) rotateY(-9deg) rotateX(4deg) rotateZ(0.5deg) translateY(-4px) !important;
+    }
+}
+
+/* Mobile must remain straight to prevent sideways overflow */
+
+@media (max-width: 768px) {
+    .hero-visual {
+        perspective: none;
+        overflow: visible;
+    }
+
+    .ai-preview {
+        width: 100% !important;
+        max-width: 100% !important;
+
+        transform: none !important;
+        transform-style: flat !important;
+
+        border-radius: 24px !important;
+    }
+
+    .ai-preview .dashboard-main {
+        transform: none !important;
+    }
+
+    .ai-preview .dashboard-header,
+    .ai-preview .dashboard-stats,
+    .ai-preview .dashboard-middle,
+    .ai-preview .quick-actions-title,
+    .ai-preview .quick-actions {
+        transform: none !important;
+    }
+
+    .ai-preview .dashboard-stat,
+    .ai-preview .dashboard-ai-card,
+    .ai-preview .dashboard-activity,
+    .ai-preview .quick-actions>div {
+        transform: none !important;
+    }
+
+    .ai-preview .dashboard-main::after {
+        border-radius: 20px;
+    }
+}
+
+/* =====================================================
+   NOVA AI — POP-OUT SCREEN EFFECT
+   Keeps glow + side tilt
+   Removes backward lean
+===================================================== */
+
+@media (min-width: 769px) {
+
+    .hero-visual {
+        perspective: 1500px;
+        perspective-origin: 50% 50%;
+        overflow: visible !important;
+    }
+
+    .ai-preview {
+        transform-origin: center center !important;
+        transform-style: preserve-3d !important;
+
+        /* Keep the side tilt, remove backward lean */
+        transform:
+            perspective(1500px) rotateY(-17deg) rotateX(0deg) rotateZ(1.2deg) skewY(-1deg) translateZ(5px) scale(1.025) !important;
+
+        /* Extra depth only — glow remains */
+        box-shadow:
+            0 0 0 1px rgba(78, 190, 255, 0.75),
+            0 0 8px rgba(80, 202, 255, 0.95),
+            0 0 22px rgba(25, 157, 255, 0.82),
+            0 0 55px rgba(0, 115, 255, 0.62),
+            0 0 110px rgba(0, 72, 255, 0.36),
+            0 42px 35px rgba(0, 0, 0, 0.32),
+            0 65px 90px rgba(0, 0, 0, 0.52),
+            inset 0 1px 0 rgba(255, 255, 255, 0.28),
+            inset 0 -1px 0 rgba(70, 190, 255, 0.5) !important;
+
+        transition:
+            transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+            box-shadow 0.5s ease !important;
+    }
+
+    /* More obvious pop when hovering */
+
+    .ai-preview:hover {
+        transform:
+            perspective(1500px) rotateY(-17deg) rotateX(0deg) rotateZ(1.2deg) skewY(-1deg) translateZ(70px) scale(1.045) !important;
+    }
+
+        /* Keep the actual dashboard content sharp */
+    
+        .ai-preview .dashboard-main,
+        .ai-preview .dashboard-header,
+        .ai-preview .dashboard-stats,
+        .ai-preview .dashboard-middle,
+        .ai-preview .quick-actions-title,
+        .ai-preview .quick-actions,
+        .ai-preview .dashboard-stat,
+        .ai-preview .dashboard-ai-card,
+        .ai-preview .dashboard-activity,
+        .ai-preview .quick-actions>div {
+            transform: none !important;
+            filter: none !important;
+            opacity: 1 !important;
+            backface-visibility: visible !important;
+        }
+    }
+
+/* Mobile stays flat and does not overflow */
+
+@media (max-width: 768px) {
+
+    .ai-preview {
+        transform: none !important;
+        transform-style: flat !important;
+    }
+
+    .ai-preview .dashboard-main,
+    .ai-preview .dashboard-header,
+    .ai-preview .dashboard-stats,
+    .ai-preview .dashboard-middle,
+    .ai-preview .quick-actions-title,
+    .ai-preview .quick-actions,
+    .ai-preview .dashboard-stat,
+    .ai-preview .dashboard-ai-card,
+    .ai-preview .dashboard-activity,
+    .ai-preview .quick-actions>div {
+        transform: none !important;
+    }
+}
+
+/* =========================================================
+   SHARP FLOATING SCREEN EFFECT
+   Changes the screen shell only — not the dashboard layout
+========================================================= */
+
+.hero-visual {
+    perspective: 1500px;
+    perspective-origin: 50% 50%;
+    overflow: visible !important;
+}
+
+/* Main floating screen */
+
+.ai-preview {
+    position: relative !important;
+    isolation: isolate !important;
+
+    /* Removes the grey/ashy appearance */
+    background:
+        linear-gradient(135deg,
+            #123b63 0%,
+            #0b2948 38%,
+            #071b32 72%,
+            #041326 100%) !important;
+
+    /* Keep the actual screen sharp */
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    opacity: 1 !important;
+
+    /* Thin crystal-clear rim */
+    border: 1px solid rgba(100, 205, 255, 0.9) !important;
+
+    /* Floating blue edge glow */
+    box-shadow:
+        0 0 0 1px rgba(55, 180, 255, 0.35),
+        0 0 8px rgba(70, 195, 255, 0.95),
+        0 0 25px rgba(0, 145, 255, 0.85),
+        0 0 55px rgba(0, 110, 255, 0.65),
+        0 0 100px rgba(0, 75, 255, 0.38),
+        0 35px 45px rgba(0, 0, 0, 0.4),
+        0 65px 100px rgba(0, 0, 0, 0.55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -2px 0 rgba(45, 180, 255, 0.5) !important;
+}
+
+/* Glow stays outside the screen, not across the dashboard */
+
+.ai-preview::before {
+    content: "";
+    position: absolute;
+    inset: -18px;
+    border-radius: inherit;
+
+    background:
+        radial-gradient(ellipse at 50% 100%,
+            rgba(0, 170, 255, 0.7),
+            transparent 58%);
+
+    filter: blur(22px);
+    opacity: 0.75;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Bright lower light streak like the reference */
+
+.ai-preview::after {
+    content: "";
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    bottom: -22px;
+    height: 26px;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            rgba(0, 190, 255, 0.95),
+            rgba(80, 220, 255, 0.8),
+            transparent);
+
+    filter: blur(12px);
+    opacity: 0.9;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Keep every dashboard element flat and sharp */
+
+.ai-preview *,
+.ai-preview .dashboard-main,
+.ai-preview .dashboard-header,
+.ai-preview .dashboard-stats,
+.ai-preview .dashboard-middle,
+.ai-preview .quick-actions-title,
+.ai-preview .quick-actions,
+.ai-preview .dashboard-stat,
+.ai-preview .dashboard-ai-card,
+.ai-preview .dashboard-activity,
+.ai-preview .quick-actions>div {
+    filter: none !important;
+    opacity: 1 !important;
+    text-shadow: none !important;
+    transform: none !important;
+}
+
+/* Preserve your existing dashboard cards without grey overlays */
+
+.ai-preview .dashboard-stat,
+.ai-preview .dashboard-ai-card,
+.ai-preview .dashboard-activity,
+.ai-preview .quick-actions>div {
+    background:
+        linear-gradient(145deg,
+            rgba(35, 76, 116, 0.58),
+            rgba(7, 27, 49, 0.78)) !important;
+
+    border: 1px solid rgba(105, 185, 235, 0.2) !important;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 8px 20px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Mobile remains normal and sharp */
+
+@media (max-width: 768px) {
+    .ai-preview {
+        transform: none !important;
+        transform-style: flat !important;
+    }
+
+    .ai-preview::before,
+    .ai-preview::after {
+        opacity: 0.45;
+    }
+}
+
+/* =====================================================
+   REMOVE ASH LINE + SHORTEN THE SCREEN
+===================================================== */
+
+/* Remove the grey/ashy overlay inside the dashboard */
+.ai-preview::before {
+    background: none !important;
+    opacity: 0 !important;
+    filter: none !important;
+}
+
+/* Remove the extra bottom haze/line */
+.ai-preview::after {
+    display: none !important;
+}
+
+/* Make the dashboard shorter and more landscape */
+.ai-preview {
+    height: 430px !important;
+    min-height: 0 !important;
+
+    padding-bottom: 10px !important;
+
+    overflow: hidden !important;
+
+    /* Keep the screen dark and clean */
+    background:
+        linear-gradient(135deg,
+            #123b63 0%,
+            #0b2948 40%,
+            #071b32 75%,
+            #041326 100%) !important;
+}
+
+/* Remove unnecessary bottom space inside the dashboard */
+.ai-preview .dashboard-main {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Keep the lower sections tight */
+.ai-preview .quick-actions {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* =====================================================
+   REMOVE THE INNER ASH/GREY BOARD COMPLETELY
+===================================================== */
+
+/* Make the main dashboard one clean color */
+.ai-preview {
+    background: #09223d !important;
+
+    /* Keep the outer blue glow */
+    box-shadow:
+        0 0 0 1px rgba(78, 190, 255, 0.75),
+        0 0 8px rgba(80, 202, 255, 0.95),
+        0 0 22px rgba(25, 157, 255, 0.82),
+        0 0 55px rgba(0, 115, 255, 0.62),
+        0 0 110px rgba(0, 72, 255, 0.36),
+        0 42px 35px rgba(0, 0, 0, 0.32),
+        0 65px 90px rgba(0, 0, 0, 0.52) !important;
+}
+
+/* Remove the smaller curved inner board/reflection */
+.ai-preview::after {
+    display: none !important;
+    content: none !important;
+}
+
+/* Remove any remaining inner grey/white rim */
+.ai-preview {
+    border: 1px solid rgba(100, 205, 255, 0.9) !important;
+    outline: none !important;
+}
+
+/* Remove inner shading lines */
+.ai-preview,
+.ai-preview:hover {
+    box-shadow:
+        0 0 0 1px rgba(78, 190, 255, 0.75),
+        0 0 8px rgba(80, 202, 255, 0.95),
+        0 0 22px rgba(25, 157, 255, 0.82),
+        0 0 55px rgba(0, 115, 255, 0.62),
+        0 0 110px rgba(0, 72, 255, 0.36),
+        0 42px 35px rgba(0, 0, 0, 0.32),
+        0 65px 90px rgba(0, 0, 0, 0.52) !important;
+}
+
+/* =====================================================
+   CLEAN ONE-COLOR DASHBOARD SURFACE
+   Keeps container borders and rounded corners
+===================================================== */
+
+/* Main screen must have one navy color only */
+.ai-preview,
+.ai-preview .dashboard-main {
+    background: #09223d !important;
+    background-image: none !important;
+
+    border: none !important;
+    outline: none !important;
+
+    /* Remove the large inner ash/grey surface */
+    box-shadow: none !important;
+}
+
+/* Remove hidden curved overlays and connector layers */
+.ai-preview .dashboard-main::before,
+.ai-preview .dashboard-main::after,
+.ai-preview .dashboard-middle::before,
+.ai-preview .dashboard-middle::after,
+.ai-preview .dashboard-stats::before,
+.ai-preview .dashboard-stats::after,
+.ai-preview .quick-actions::before,
+.ai-preview .quick-actions::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Keep the individual containers visible,
+   but remove their connecting/background wash */
+.ai-preview .dashboard-stats,
+.ai-preview .dashboard-middle,
+.ai-preview .quick-actions {
+    background: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+}
+
+/* Keep each container's own shape and edge */
+.ai-preview .dashboard-stat,
+.ai-preview .dashboard-ai-card,
+.ai-preview .dashboard-activity,
+.ai-preview .quick-actions>div {
+    background: rgba(12, 43, 72, 0.9) !important;
+    border: 1px solid rgba(105, 185, 235, 0.2) !important;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+}
+
+/* =====================================================
+   PERMANENT OUTER GLOW + LARGER LANDSCAPE DASHBOARD
+===================================================== */
+
+/* Make the dashboard larger */
+.hero-visual {
+    width: 100% !important;
+    max-width: none !important;
+    overflow: visible !important;
+}
+
+.ai-preview {
+    width: min(100%, 1000px) !important;
+    height: 470px !important;
+    min-height: 0 !important;
+
+    /* One clean navy color inside */
+    background: #09223d !important;
+    background-image: none !important;
+
+    /* Keep the existing 3D screen angle */
+    transform-origin: center center !important;
+
+    /* Glow must show without hovering */
+    box-shadow:
+        0 0 0 1px rgba(78, 190, 255, 0.85),
+        0 0 8px rgba(80, 202, 255, 1),
+        0 0 22px rgba(25, 157, 255, 0.9),
+        0 0 55px rgba(0, 115, 255, 0.72),
+        0 0 110px rgba(0, 72, 255, 0.42),
+        0 35px 45px rgba(0, 0, 0, 0.4),
+        0 65px 100px rgba(0, 0, 0, 0.55) !important;
+
+    transition:
+        transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+        box-shadow 0.5s ease !important;
+}
+
+/* Keep exactly the same glow while hovering */
+.ai-preview:hover {
+    box-shadow:
+        0 0 0 1px rgba(78, 190, 255, 0.85),
+        0 0 8px rgba(80, 202, 255, 1),
+        0 0 22px rgba(25, 157, 255, 0.9),
+        0 0 55px rgba(0, 115, 255, 0.72),
+        0 0 110px rgba(0, 72, 255, 0.42),
+        0 35px 45px rgba(0, 0, 0, 0.4),
+        0 65px 100px rgba(0, 0, 0, 0.55) !important;
+}
+
+/* Remove the hidden curved inner board */
+.ai-preview::after {
+    display: none !important;
+    content: none !important;
+}
+
+/* Keep the inside plain navy */
+.ai-preview .dashboard-main {
+    background: transparent !important;
+    background-image: none !important;
+}
+
+/* Keep mobile layout usable */
+@media (max-width: 768px) {
+    .ai-preview {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 430px !important;
+        transform: none !important;
+    }
+}
+
+/* =====================================================
+   REMOVE THE OVERALL EMPTY BOTTOM SPACE
+   Includes the dashboard and all its containers
+===================================================== */
+
+.ai-preview {
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+
+    /* Only a small breathing space below Quick Actions */
+    padding-bottom: 14px !important;
+
+    /* Keep the whole dashboard compact */
+    margin-bottom: 0 !important;
+}
+
+.ai-preview .dashboard-main {
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Remove extra bottom spacing from the final section */
+.ai-preview .quick-actions {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Remove bottom spacing from the final buttons */
+.ai-preview .quick-actions>div:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* Keep the outer glow permanently visible */
+.ai-preview {
+    box-shadow:
+        0 0 0 1px rgba(78, 190, 255, 0.85),
+        0 0 8px rgba(80, 202, 255, 1),
+        0 0 22px rgba(25, 157, 255, 0.9),
+        0 0 55px rgba(0, 115, 255, 0.72),
+        0 0 110px rgba(0, 72, 255, 0.42),
+        0 35px 45px rgba(0, 0, 0, 0.4),
+        0 65px 100px rgba(0, 0, 0, 0.55) !important;
+}
+
+/* =====================================================
+   DEFAULT SIZE = CURRENT HOVER SIZE
+   NEW HOVER SIZE = EVEN LARGER
+   NO EXTRA BOTTOM MARGIN
+===================================================== */
+
+/* New normal/default size */
+.ai-preview {
+    transform:
+        perspective(1500px) rotateY(-17deg) rotateX(0deg) rotateZ(1.2deg) skewY(-1deg) translateZ(70px) scale(1.045) !important;
+
+    transform-origin: center center !important;
+
+    /* Scale the entire dashboard together */
+    width: min(100%, 1000px) !important;
+
+    margin-bottom: 0 !important;
+}
+
+/* New, larger hover size */
+.ai-preview:hover {
+    transform:
+        perspective(1500px) rotateY(-17deg) rotateX(0deg) rotateZ(1.2deg) skewY(-1deg) translateZ(95px) scale(1.085) !important;
+}
+
+/* Prevent extra bottom spacing */
+.ai-preview,
+.ai-preview .dashboard-main,
+.ai-preview .quick-actions {
+    margin-bottom: 0 !important;
+}
+
+/* Keep mobile flat and normal */
+@media (max-width: 768px) {
+    .ai-preview {
+        transform: none !important;
+        width: 100% !important;
+        margin-bottom: 0 !important;
+    }
+
+    .ai-preview:hover {
+        transform: none !important;
+    }
+}
+
+/* Explore Features link — Light Theme */
+body.light-theme a.secondary {
+    background: #061a3a !important;
+    color: #ffffff !important;
+    border-color: #061a3a !important;
+}
+
+body.light-theme a.secondary:hover {
+    background: #0b2d5c !important;
+    color: #ffffff !important;
+}
+
+/* =========================================
+   HOME PAGE ONLY
+   ========================================= */
+
+/* Explore Features button in light mode */
+body.home-page.light-mode .buttons a.secondary {
+    background: #0f2747;
+    color: #ffffff;
+    border-color: #0f2747;
+}
+
+body.home-page.light-mode .buttons a.secondary:hover {
+    background: #183b68;
+    color: #ffffff;
+    border-color: #183b68;
+}
+
+
+/* =========================================
+   ACTIVE NAVBAR LINK - DESKTOP
+   ========================================= */
+
+@media (min-width: 769px) {
+
+    .nav-links a.active {
+        color: #7dd3fc;
+        background: rgba(56, 189, 248, 0.08);
+        border: 1px solid rgba(56, 189, 248, 0.18);
+        box-shadow:
+            0 0 18px rgba(56, 189, 248, 0.12),
+            inset 0 0 12px rgba(56, 189, 248, 0.04);
+        border-radius: 10px;
+    }
+
+    body.light-mode .nav-links a.active {
+        color: #0f2747;
+        background: rgba(37, 99, 235, 0.08);
+        border-color: rgba(37, 99, 235, 0.18);
+        box-shadow:
+            0 0 16px rgba(37, 99, 235, 0.10),
+            inset 0 0 10px rgba(37, 99, 235, 0.04);
+    }
+
+}
+
+/* =========================================
+   NOVA AI DASHBOARD — MOBILE SHAPE FIX
+   ========================================= */
+
+/* Let the dashboard show its full content */
+.ai-preview {
+    width: 100% !important;
+    max-width: 1000px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+
+    box-sizing: border-box !important;
+    overflow: visible !important;
+
+    padding: 25px !important;
+}
+
+/* Keep all dashboard content inside the frame */
+.ai-preview .dashboard-main {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-width: 100% !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 22px !important;
+
+    box-sizing: border-box !important;
+}
+
+/* Keep the dashboard sections properly sized */
+.ai-preview .dashboard-header,
+.ai-preview .dashboard-stats,
+.ai-preview .dashboard-middle,
+.ai-preview .quick-actions {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+
+    box-sizing: border-box !important;
+}
+
+/* Mobile dashboard */
+@media (max-width: 768px) {
+
+    .ai-preview {
+        width: 100% !important;
+        max-width: 100% !important;
+
+        height: auto !important;
+        min-height: 0 !important;
+        aspect-ratio: auto !important;
+
+        padding: 16px !important;
+        overflow: visible !important;
+
+        transform: none !important;
+    }
+
+    .ai-preview .dashboard-main {
+        height: auto !important;
+        min-height: 0 !important;
+
+        gap: 18px !important;
+    }
+
+    /* Greeting stays visible */
+    .ai-preview .dashboard-header {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 16px !important;
+    }
+
+    .ai-preview .dashboard-user {
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Statistics */
+    .ai-preview .dashboard-stats {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+    }
+
+    /* Middle cards */
+    .ai-preview .dashboard-middle {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+    }
+
+    /* Quick actions */
+    .ai-preview .quick-actions {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+    }
+
+    .ai-preview .dashboard-stat,
+    .ai-preview .dashboard-ai-card,
+    .ai-preview .dashboard-activity,
+    .ai-preview .quick-actions>div {
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 420px) {
+
+    .ai-preview {
+        padding: 14px !important;
+    }
+
+    .ai-preview .dashboard-main {
+        gap: 15px !important;
+    }
+
+    .ai-preview .dashboard-stats,
+    .ai-preview .quick-actions {
+        gap: 8px !important;
+    }
+}
+
+/* =========================================
+   NOVA AI — SMALL PHONE DASHBOARD FIX
+   iPhone 6 / 7 / 8 — 375px
+   ========================================= */
+
+@media (max-width: 390px) {
+
+    /* Let the hero grow naturally */
+    .hero {
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    /* Restore a usable dashboard frame */
+    .ai-preview {
+        display: block !important;
+
+        width: 100% !important;
+        max-width: 100% !important;
+
+        height: auto !important;
+        min-height: 620px !important;
+        aspect-ratio: auto !important;
+
+        padding: 16px !important;
+        box-sizing: border-box !important;
+
+        overflow: visible !important;
+        transform: none !important;
+    }
+
+    /* Restore the dashboard's natural height */
+    .ai-preview .dashboard-main {
+        display: flex !important;
+        flex-direction: column !important;
+
+        width: 100% !important;
+        height: auto !important;
+        min-height: 560px !important;
+        max-width: 100% !important;
+
+        gap: 18px !important;
+        box-sizing: border-box !important;
+
+        overflow: visible !important;
+        transform: none !important;
+    }
+
+    /* Keep the dashboard content visible */
+    .ai-preview .dashboard-header,
+    .ai-preview .dashboard-stats,
+    .ai-preview .dashboard-middle,
+    .ai-preview .quick-actions {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+
+        box-sizing: border-box !important;
+    }
+
+    /* Two-column statistics */
+    .ai-preview .dashboard-stats {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+    }
+
+    /* One-column middle dashboard */
+    .ai-preview .dashboard-middle {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+    }
+
+    /* Two-column quick actions */
+    .ai-preview .quick-actions {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+    }
+
+    .ai-preview .dashboard-stat,
+    .ai-preview .dashboard-ai-card,
+    .ai-preview .dashboard-activity,
+    .ai-preview .quick-actions>div {
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+    }
+}
+
